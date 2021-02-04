@@ -34,6 +34,9 @@
 #### User Settings Page
 <img src="wireframes/settings page.png">
 
+#### Entity Relationship Diagram 
+<img src="wireframes/ERD.png">
+
 <br>
 <br>
 
