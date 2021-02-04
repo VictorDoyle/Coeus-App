@@ -40,17 +40,17 @@
 ## User Stories
 
 <ul>
-<li> The user arrives on a landing page that explains the application. The explanation walks through the following: The social media platform is about promoting inquisitive thought and curiosity and interaction. It will show the user how to post a post, and how to find other users.
-<li> Once the user has gone through the 3-4 pages of introduction/tutorial, the user will have a chance to sign up to the platform. If the user already has an account, they will be able to login whenever they arrive to the landing page (there will be a consistent login button in the Navigation Bar)
+<li> The user arrives on a landing page that explains the application. The explanation walks through the following: The social media platform is about promoting inquisitive thought and curiosity and interaction.
+<li> Once the user has gone through the landing page, the user will have a chance to sign up to the platform. If the user already has an account, they will be able to login whenever they arrive to the landing page (there will be a consistent login or register button on the right side)
 <li> Once logged in or registered, the user will have a homepage that is populated with posts and news articles. The user will be able to use the search bar to look for their friends and add them to their friends list. Doing this will give them access to commenting on their posts, sending them messages and interacting with one another. The user will use the application for communicating with other users, as well as being productive while on the application. The user will have consistent prompts to read or learn new things as they keep interacting with the application.
 </ul>
 
 
 
 
-## Questions you might have:
+# Questions you might have:
 
-# Why is the App named "Coeus"?
+## Why is the App named "Coeus"?
 Coeus was the greek titan of inquisition and intellect. Since this social media platform hopes to promote inquisition and intellectual stimulation in regards to learning more things, the symbolism and essence behind the Greek God Coeus is well fitting.
 
 
