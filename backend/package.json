@@ -1,0 +1,29 @@
+{
+  "name": "coeus-backend",
+  "version": "1.0.0",
+  "description": "a social media application ",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VictorDoyle/Coeus-App.git"
+  },
+  "keywords": [
+    "social",
+    "media",
+    "application",
+    "platform"
+  ],
+  "author": "Victor Doyle",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VictorDoyle/Coeus-App/issues"
+  },
+  "homepage": "https://github.com/VictorDoyle/Coeus-App#readme"
+}

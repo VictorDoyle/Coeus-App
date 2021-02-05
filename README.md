@@ -54,7 +54,7 @@
 # Questions you might have:
 
 ## Why is the App named "Coeus"?
-Coeus was the greek titan of inquisition and intellect. Since this social media platform hopes to promote inquisition and intellectual stimulation in regards to learning more things, the symbolism and essence behind the Greek God Coeus is well fitting.
+Coeus [pronounced "Ti-Oh-Sh" or "Ki-Oh-Sh"] was the greek titan of inquisition and intellect. Since this social media platform hopes to promote inquisition and intellectual stimulation in regards to learning more things, the symbolism and essence behind the Greek God Coeus is well fitting.
 
 
 ## What to expect in the MVP deployment 
