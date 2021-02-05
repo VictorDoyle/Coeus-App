@@ -3,6 +3,9 @@ import Loader from '../components/Loader/Loader'
 import SignupForm from '../components/SignupForm/SignupForm'
 import '../styles/LandingPage.css'
 
+/* external */
+import CountUp from 'react-countup';
+
 
 
 const LandingPage = () => {
@@ -20,16 +23,16 @@ const LandingPage = () => {
                 <div class="ui statistics">
                     <div class="ui statistic">
                       <div class="label">Users Spend <br></br> An Average of</div>
-                      <div class="value">14</div>
+                      <div class="value"><CountUp duration={4} end={14} /></div>
                       <div class="label">Hours A Week <br></br> On Social Media</div>
                     </div>
                     <div class="ui statistic">
                       <div class="label"><br></br>In Total</div>
-                      <div class="value">35%</div>
+                      <div class="value"><CountUp duration={4} end={35} />%</div>
                       <div class="label">Of Users Get Their News <br></br> From Social Media</div>
                     </div>
                     <div class="ui statistic">
-                      <div class="value">57%</div>
+                      <div class="value"><CountUp duration={4} end={57} />%</div>
                       <div class="label">Of Millenials in 2020 <br></br> Use Social Media <br></br> As A News Source</div>
                     </div>
                 </div>
