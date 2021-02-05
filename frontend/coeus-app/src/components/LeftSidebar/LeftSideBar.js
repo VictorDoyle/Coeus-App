@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Icon, Menu, Header } from 'semantic-ui-react'
+import { Icon, Menu, Header, Feed } from 'semantic-ui-react'
 import '../LeftSidebar/LeftSideBar.css'
+import Notification from '../../components/Notification/Notification'
 
 export default class MenuExampleLabeledIconsVertical extends Component {
   state = { activeItem: 'gamepad' }
@@ -30,6 +31,11 @@ export default class MenuExampleLabeledIconsVertical extends Component {
             <Menu.Item>
                 Notifications here
             </Menu.Item>
+           
+            <Feed>
+              Notifications brought in Here
+              <Notification/>
+            </Feed>
 
         </Menu>
     </div>
