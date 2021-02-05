@@ -77,8 +77,8 @@ function SearchBar() {
           value={value}
         />
       </Grid.Column>
-
-      <Grid.Column width={10}>
+{/* below is testing output of search function */}
+    {/*   <Grid.Column width={10}>
         <Segment>
           <Header>State</Header>
           <pre style={{ overflowX: 'auto' }}>
@@ -89,7 +89,7 @@ function SearchBar() {
             {JSON.stringify(source, null, 2)}
           </pre>
         </Segment>
-      </Grid.Column>
+      </Grid.Column> */}
     </Grid>
   )
 }

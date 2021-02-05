@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Icon, Menu } from 'semantic-ui-react'
 import SearchBar from '../SearchBar/SearchBar'
+import './Navbar.css'
 
 export default class MenuExampleLabeledIcons extends Component {
   state = { activeItem: 'home' }
@@ -12,24 +13,25 @@ export default class MenuExampleLabeledIcons extends Component {
 
     return (
       <Menu icon='labeled'>
+     
         {/* logo + search bar */}
-        <div className="leftNav">
+        <Menu.Menu position='left'> 
         <Menu.Item
           name='graduation cap'
           active={activeItem === 'graduation cap'}
           onClick={this.handleItemClick}
         >
           <Icon name='graduation cap' />
-          
+          Logo
         </Menu.Item>
 
         <Menu.Item>
           <SearchBar/>
         </Menu.Item>
-        </div>
+        </Menu.Menu>
 
         {/* main nav items */}
-        <div className="centerNav">
+        <Menu.Menu position='right'> 
         <Menu.Item
           name='home'
           active={activeItem === 'home'}
@@ -56,10 +58,11 @@ export default class MenuExampleLabeledIcons extends Component {
           <Icon name='newspaper outline' />
           News
         </Menu.Item>
-        </div>
+        </Menu.Menu>
+      
         {/* user profile + settings side */}
 
-        <div className="rightNavBar"> 
+        <Menu.Menu position='right'> 
         <Menu.Item
           name='plus square'
           active={activeItem === 'plus square'}
@@ -77,7 +80,7 @@ export default class MenuExampleLabeledIcons extends Component {
           <Icon name='setting' />
           Settings
         </Menu.Item>
-        </div>
+        </Menu.Menu>
 
       </Menu>
     )

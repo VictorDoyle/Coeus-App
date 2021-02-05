@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Checkbox, Form } from 'semantic-ui-react'
+import { Button, Checkbox, Form, Message } from 'semantic-ui-react'
 
 const SignupForm = () => (
   <Form>
@@ -11,19 +11,18 @@ const SignupForm = () => (
       <label>Last Name</label>
       <input placeholder='Last Name' />
     </Form.Field>
-    <Form success>
     <Form.Input label='Email' placeholder='youremail@email.com' />
+    <Form.Field>
+      <Checkbox label='I agree to the Terms and Conditions' />
+    </Form.Field>
+    <Button type='submit'>Submit</Button>
+   {/*  <Form success>
     <Message
       success
       header='Form Completed'
       content="You're all signed up for the newsletter"
     />
-    <Button>Submit</Button>
-  </Form>
-    <Form.Field>
-      <Checkbox label='I agree to the Terms and Conditions' />
-    </Form.Field>
-    <Button type='submit'>Submit</Button>
+    </Form> */}
   </Form>
 )
 
