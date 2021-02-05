@@ -1,0 +1,10 @@
+.leftSideBar {
+    position: relative;
+    float: left;
+    top: 20px;
+    left: 15px;
+}
+
+.ui.vertical.icon.menu {
+    width: 420px;
+}

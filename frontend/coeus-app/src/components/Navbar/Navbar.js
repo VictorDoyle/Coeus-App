@@ -12,6 +12,7 @@ export default class MenuExampleLabeledIcons extends Component {
     const { activeItem } = this.state
 
     return (
+      <div className="NavBar">
       <Menu icon='labeled'>
      
         {/* logo + search bar */}
@@ -83,6 +84,7 @@ export default class MenuExampleLabeledIcons extends Component {
         </Menu.Menu>
 
       </Menu>
+      </div>
     )
   }
 }
