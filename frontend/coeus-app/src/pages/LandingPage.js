@@ -1,6 +1,7 @@
 import React from 'react';
 import Loader from '../components/Loader/Loader'
 import SignupForm from '../components/SignupForm/SignupForm'
+import LandingPageForm from '../components/SignupForm/LandingPageForm'
 import '../styles/LandingPage.css'
 
 /* external */
@@ -54,7 +55,8 @@ const LandingPage = () => {
                   
                   <div className="content">
                     <div className="description">
-                      <SignupForm />
+                      {/* <SignupForm /> */}
+                      <LandingPageForm />
                     </div>  
                   </div>
                 </div>

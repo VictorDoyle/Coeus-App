@@ -1,0 +1,38 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+// ====== MODELS ====== //
+// Generating the User Model
+
+model User {
+  id      Int     @id @default(autoincrement())
+  username String @unique
+  email   String  @unique
+  name    String?
+
+}
+
+// Generating the Post Model
+
+model Post {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  // updatedAt implementation unsure 
+  updatedAt DateTime @updatedAt
+  title     String
+  description String?
+  //published attribute will allow saving posts and posting later
+  published Boolean @default(false) 
+  category String? 
+
+}

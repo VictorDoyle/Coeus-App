@@ -1,0 +1,7 @@
+.friendListAvatar img{
+    float:left;
+    left: 0;
+    margin-top: 5%;
+    margin-left: -160px;
+    border-radius: 50%;
+}

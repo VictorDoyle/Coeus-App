@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import { Icon, Menu } from 'semantic-ui-react'
 import SearchBar from '../SearchBar/SearchBar'
 import './Navbar.css'
+import NewPost from './NewPost'
 
 export default class MenuExampleLabeledIcons extends Component {
   state = { activeItem: 'home' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
   render() {
     const { activeItem } = this.state
 
@@ -67,10 +67,11 @@ export default class MenuExampleLabeledIcons extends Component {
         <Menu.Item
           name='plus square'
           active={activeItem === 'plus square'}
+          /* TODO: CHANGE HERE TO HANDLE Click */
           onClick={this.handleItemClick}
         >
           <Icon name='plus square' />
-          New Post
+          <NewPost />
         </Menu.Item>
 
         <Menu.Item

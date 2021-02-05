@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Icon, Menu, Header } from 'semantic-ui-react'
 import '../RightSideBar/RightSideBar.css'
+import FriendsList from '../../components/FriendsList/FriendsList'
 
 export default class MenuExampleLabeledIconsVertical extends Component {
   state = { activeItem: 'gamepad' }
@@ -21,7 +22,7 @@ export default class MenuExampleLabeledIconsVertical extends Component {
           </Menu.Item>
 
           <Menu.Item>
-              Notifications here
+              <FriendsList />
           </Menu.Item>
 
         </Menu>
