@@ -128,8 +128,24 @@ app.delete("/api/v1/posts/:id", async function (request, response) {
 
 /* SECTION: USER ROUTES */
 
+/* INDEX FOR ALL USERS ROUTE */
 
-app.get("/api/v1/users/:id", async function(request, response){
+app.get("/api/v1/users", async function (request,response){
+    const users = await db.user.findMany({
+        include: {
+            posts: {
+                select: {
+                    title: true,
+                    description: true,
+                }
+            },
+        },
+    });
+    response.json({ users });
+});
+
+/* SHOW ONE USER BY ID ROUTE */
+app.get("/api/v1/user/:id", async function(request, response){
     const user = await db.user.findUnique({
         where: {
             id: Number(request.params.id)
@@ -146,3 +162,38 @@ app.get("/api/v1/users/:id", async function(request, response){
     // json response for testing
     response.json({user})
 })
+
+/* CREATE USER ROUTE */
+
+app.post("/api/v1/user", async function (request, response){
+    const createdUser = await db.user.create({
+        data: request.body,
+    });
+    // message return on create for testing
+    response.json({message: 'The User was created', user: createdUser })
+});
+
+/* UPDATE USER ROUTE */
+
+app.put("/api/v1/user/:id", async function (request, response){
+    const updatedUser = await db.user.update({
+        where: {
+            id: Number(request.params.id)
+        },
+        data: request.body,
+    });
+    // message return on create for testing
+    response.json({message: "the User has been updated", user: updatedUser })
+});
+
+/* DELETE ROUTE */
+
+app.delete("/api/v1/user/:id", async function (request, response) {
+    const deletedUser = await db.user.delete({
+        where: {
+            id: Number(request.params.id),
+        }
+    });
+      // message return on create for testing
+      response.json({message: "the user has been deleted", user: deletedUser })
+});

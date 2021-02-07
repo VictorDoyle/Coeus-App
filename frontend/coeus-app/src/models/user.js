@@ -1,15 +1,14 @@
 const url = `http://localhost:4000/api/v1`
 
 class UserModel {
-  // accessed as GameModel.all()
+  // access all users
   static all = () => {
-    // calling the index method in the API controller
-    return fetch(`${url}/games`).then(res => res.json())
+    return fetch(`${url}/users`).then(res => res.json())
   }
 
   // accessed as GameModel.show(gameId)
-  static show = (gameId) => {
-    return fetch(`${url}/games/${gameId}`).then(res => res.json())
+  static show = (id) => {
+    return fetch(`${url}/user/${id}`).then(res => res.json())
   }
 
   // accessed as GameModel.create(gameData)
@@ -25,4 +24,4 @@ class UserModel {
   } 
 }
 
-export default GameModel
+export default UserModel

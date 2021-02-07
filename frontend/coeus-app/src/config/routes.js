@@ -12,6 +12,8 @@ export default (
         <Route exact path='/' component={ LandingPage } />
         <Route path='/home' component={ Homepage } />
         <Route path='/posts' component={ Homepage } />
+        {/* TODO: add component for "postShow"  */}
+        <Route path='/posts/:id' component= { Homepage } />
         <Route path='/news' component= { News } />
         <Route path='/profile/' component= { Profile } />
     </Switch>

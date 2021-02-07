@@ -34,13 +34,12 @@ class Home extends Component {
 
     return (
       <div className="homepage">
-        <UserPostContainer posts={this.state.posts}/>
+        {/* <UserPostContainer/> */}
         <LeftSideBar />
         <RightSideBar />
-        <h1>
-          All posts
-        </h1>
+        {/* below is testing to see population of posts */}
         { this.state.posts ? postsList : 'Loading...' }
+        
       </div>
     );
   } 
