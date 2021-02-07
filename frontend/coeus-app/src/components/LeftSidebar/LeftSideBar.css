@@ -1,7 +1,7 @@
 .leftSideBar {
-    position: relative;
+    position: absolute;
     float: left;
-    top: 20px;
+    top: 132px;
     left: 15px;
 }
 

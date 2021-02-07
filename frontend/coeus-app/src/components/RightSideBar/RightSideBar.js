@@ -3,7 +3,7 @@ import { Icon, Menu, Header } from 'semantic-ui-react'
 import '../RightSideBar/RightSideBar.css'
 import FriendsList from '../../components/FriendsList/FriendsList'
 
-export default class MenuExampleLabeledIconsVertical extends Component {
+export default class RightSideBar extends Component {
   state = { activeItem: 'gamepad' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })

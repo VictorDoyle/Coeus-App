@@ -1,0 +1,11 @@
+.userPostCard {
+    position: relative;
+    top: 60px;
+    z-index: 30;
+}
+
+.newsPostCard {
+    position: relative;
+    top: 60px;
+    z-index: 30;
+}

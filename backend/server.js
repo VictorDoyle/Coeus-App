@@ -1,10 +1,12 @@
 /* External Modules */
 import express from "express";
+import prisma from "@prisma/client";
 
 /* Internal Modules/Middleware */
 
 /* Instanced Modules */
 const app = express();
+const db = new prisma.PrismaClient();
 
 /* Config */
 const PORT = process.env.PORT || 4000;
@@ -23,3 +25,4 @@ app.get("/", function (request, response) {
 app.listen(PORT, function() {
     console.log(`Server is live on ${PORT}`)
 });
+

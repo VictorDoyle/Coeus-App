@@ -15,7 +15,7 @@ const initialState = {
   value: '',
 }
 
-function exampleReducer(state, action) {
+function searchReducer(state, action) {
   switch (action.type) {
     case 'CLEAN_QUERY':
       return initialState
@@ -34,7 +34,7 @@ function exampleReducer(state, action) {
 const resultRenderer = ({ title }) => <Label content={title} />
 
 function SearchBar() {
-  const [state, dispatch] = React.useReducer(exampleReducer, initialState)
+  const [state, dispatch] = React.useReducer(searchReducer, initialState)
   const { loading, results, value } = state
 
   const timeoutRef = React.useRef()

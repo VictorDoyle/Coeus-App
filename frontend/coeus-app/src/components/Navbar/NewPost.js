@@ -1,5 +1,7 @@
 import React from 'react'
 import { Button, Modal, Icon } from 'semantic-ui-react'
+import NewPostForm from '../NewPostForm/NewPostForm'
+import './NewPost.css'
 
 function exampleReducer(state, action) {
   switch (action.type) {
@@ -21,24 +23,27 @@ function AddNewPost() {
 
   return (
     <div>
-     <Icon name='plus square' />
-      <Button onClick={() => dispatch({ type: 'OPEN_MODAL' })}>Default</Button>
+        <Icon onClick={() => dispatch({ type: 'OPEN_MODAL' })}>
+            <Icon name='plus square'  size='big'className="newPostButton"/>
+        </Icon>
+    
       <Modal
         dimmer={dimmer}
         open={open}
         onClose={() => dispatch({ type: 'CLOSE_MODAL' })}
       >
-        <Modal.Header>Use Google's location service?</Modal.Header>
+        <Modal.Header> Create Post
+        <Button circular icon='close' floated='right' onClick={() => dispatch({ type: 'CLOSE_MODAL' })}>  
+          </Button>
+
+        </Modal.Header>
+        {/* Add close button far right of Header */}
         <Modal.Content>
-          Let Google help apps determine location. This means sending anonymous
-          location data to Google, even when no apps are running.
+         <NewPostForm />
         </Modal.Content>
         <Modal.Actions>
-          <Button negative onClick={() => dispatch({ type: 'CLOSE_MODAL' })}>
-            Disagree
-          </Button>
-          <Button positive onClick={() => dispatch({ type: 'CLOSE_MODAL' })}>
-            Agree
+          <Button fluid onClick={() => dispatch({ type: 'CLOSE_MODAL' })}>
+            Post
           </Button>
         </Modal.Actions>
       </Modal>

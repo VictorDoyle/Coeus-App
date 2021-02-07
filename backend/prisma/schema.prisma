@@ -16,10 +16,14 @@ generator client {
 
 model User {
   id      Int     @id @default(autoincrement())
+  firstname String
+  lastname String
   username String @unique
   email   String  @unique
   name    String?
 
+  //all posts user has made
+  posts Post[]
 }
 
 // Generating the Post Model
@@ -33,6 +37,21 @@ model Post {
   description String?
   //published attribute will allow saving posts and posting later
   published Boolean @default(false) 
+  // keep category for post mvp stage
   category String? 
 
+  // Model Relationship (One To Many // User To Post)
+  // store userId inside table for prisma to relate to post
+  userId Int 
+  // userId with key of id is related to Post
+  User  User  @relation(fields: [userId], references: [id])
+
 }
+
+
+// TODO: Comments (Many to Many)
+// Friends/Followers (Many followers to One User) || (One User follow to One User)
+// Posts has many comments to One post -- 
+// Posts has many likes to One Post
+
+

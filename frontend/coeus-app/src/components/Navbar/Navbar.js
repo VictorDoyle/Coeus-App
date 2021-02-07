@@ -3,6 +3,7 @@ import { Icon, Menu } from 'semantic-ui-react'
 import SearchBar from '../SearchBar/SearchBar'
 import './Navbar.css'
 import NewPost from './NewPost'
+import { Link } from 'react-router-dom';
 
 export default class MenuExampleLabeledIcons extends Component {
   state = { activeItem: 'home' }
@@ -17,6 +18,7 @@ export default class MenuExampleLabeledIcons extends Component {
      
         {/* logo + search bar */}
         <Menu.Menu position='left'> 
+        <Link to={'/home'}>
         <Menu.Item
           name='graduation cap'
           active={activeItem === 'graduation cap'}
@@ -25,6 +27,7 @@ export default class MenuExampleLabeledIcons extends Component {
           <Icon name='graduation cap' />
           Logo
         </Menu.Item>
+        </Link>
 
         <Menu.Item>
           <SearchBar/>
@@ -33,6 +36,7 @@ export default class MenuExampleLabeledIcons extends Component {
 
         {/* main nav items */}
         <Menu.Menu position='right'> 
+        <Link to={'/home'}>
         <Menu.Item
           name='home'
           active={activeItem === 'home'}
@@ -41,7 +45,9 @@ export default class MenuExampleLabeledIcons extends Component {
           <Icon name='home' />
           Home
         </Menu.Item>
+        </Link>
 
+        <Link to={'/posts'}>
         <Menu.Item
           name='write square'
           active={activeItem === 'write square'}
@@ -50,7 +56,9 @@ export default class MenuExampleLabeledIcons extends Component {
           <Icon name='write square' />
           Posts
         </Menu.Item>
+        </Link>
 
+        <Link to={'/news'}>
         <Menu.Item
           name='newspaper outline'
           active={activeItem === 'newspaper outline'}
@@ -59,18 +67,28 @@ export default class MenuExampleLabeledIcons extends Component {
           <Icon name='newspaper outline' />
           News
         </Menu.Item>
+        </Link>
         </Menu.Menu>
       
         {/* user profile + settings side */}
-
         <Menu.Menu position='right'> 
+
+
+        <Menu.Item
+          name='user'
+          active={activeItem === 'user'}
+          onClick={this.handleItemClick}
+        >
+          <Icon name='user' />
+          Your Username here
+        </Menu.Item>
+
         <Menu.Item
           name='plus square'
           active={activeItem === 'plus square'}
           /* TODO: CHANGE HERE TO HANDLE Click */
           onClick={this.handleItemClick}
         >
-          <Icon name='plus square' />
           <NewPost />
         </Menu.Item>
 

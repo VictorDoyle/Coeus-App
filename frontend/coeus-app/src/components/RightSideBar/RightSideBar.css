@@ -1,6 +1,9 @@
+/* TODO: Add breakpoint on mobile and transfer to Hamburger Menu */
+
 .rightSideBar {
-    position: relative;
+    position: absolute;
     float: right;
-    top: 20px;
+    top: 132px;
     right: 15px;
+    z-index: 30;
 }
