@@ -8,7 +8,6 @@ import RightSideBar from '../components/RightSideBar/RightSideBar';
 const Home = () => {
   return (
     <div className="homepage">
-      <Navbar />
       <UserPostContainer />
       <LeftSideBar />
       <RightSideBar />
