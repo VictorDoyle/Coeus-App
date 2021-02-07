@@ -73,7 +73,7 @@ export default class MenuExampleLabeledIcons extends Component {
         {/* user profile + settings side */}
         <Menu.Menu position='right'> 
 
-
+        <Link to={'/profile/:id'}>
         <Menu.Item
           name='user'
           active={activeItem === 'user'}
@@ -82,6 +82,7 @@ export default class MenuExampleLabeledIcons extends Component {
           <Icon name='user' />
           Your Username here
         </Menu.Item>
+        </Link>
 
         <Menu.Item
           name='plus square'
