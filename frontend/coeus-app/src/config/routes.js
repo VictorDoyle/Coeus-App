@@ -13,7 +13,7 @@ export default (
         <Route path='/home' component={ Homepage } />
         <Route path='/posts' component={ Homepage } />
         <Route path='/news' component= { News } />
-        <Route path='/profile/:id' component= { Profile } />
+        <Route path='/profile/' component= { Profile } />
     </Switch>
 )
 

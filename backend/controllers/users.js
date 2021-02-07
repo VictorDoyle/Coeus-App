@@ -1,12 +1,12 @@
 import express from "express";
 import prisma from "@prisma/client";
-
-import db from "../server"
+const router = express.Router();
+import * as db from "../server.js"
 /* USER ROUTES */
 
 // User Show
 
-app.get("/api/v1/users/:id", async function(request, response){
+router.get("/api/v1/users/:id", async function(request, response){
     const user = await db.user.findUnique({
         where: {
             id: Number(request.params.id)

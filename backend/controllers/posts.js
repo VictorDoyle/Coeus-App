@@ -3,13 +3,12 @@ import express from "express";
 import prisma from "@prisma/client";
 
 const router = express.Router();
-
-import db from "../server"
+/* import db from "../server.js" */
 // POSTS ROUTES
 
 /* INDEX FOR ALL POSTS  */
-router.get("/home", async function (request,response){
-    const posts = await db.post.findMany({
+router.get("/api/v1/posts", async function (request,response){
+    const posts = await db.Post.findMany({
         where: {
             published: true,
             description: {
@@ -18,24 +17,26 @@ router.get("/home", async function (request,response){
         },
         include: {
             User: true,
+            author: true,
         },
     });
     response.json({ posts });
 });
 
 /* INDEX FOR ALL POSTS THAT ARENT PUBLISHED OF THAT HAVE BEEN POSTED LIVE (published=false)  */
-app.get("/api/v1/posts", async function (request,response){
+/* TODO: Test/Implement after MVP completion */
+/* router.get("/api/v1/posts", async function (request,response){
     const posts = await db.post.findMany({
         where: {
             published: false,
         }
     });
     response.json({ posts });
-});
+}); */
 
 
 /* INDEX FOR ALL POSTS WHERE CONTENT IS FILTERED SPECIFICALLY VIA DESCRIPTION  */
-app.get("/api/v1/posts", async function (request,response){
+router.get("/api/v1/posts", async function (request,response){
     const posts = await db.post.findMany({
         select: {
             title: true,
@@ -54,7 +55,7 @@ app.get("/api/v1/posts", async function (request,response){
 
 /* SHOW POST ROUTE */
 
-app.get("/api/v1/posts/:id", async function (request,response){
+router.get("/api/v1/posts/:id", async function (request,response){
     const post = await db.post.findUnique({
         where: {
             id: Number(request.params.id),
@@ -65,7 +66,7 @@ app.get("/api/v1/posts/:id", async function (request,response){
 
 /* CREATE ROUTE */
 
-app.post("/api/v1/posts", async function (request, response){
+router.post("/api/v1/posts", async function (request, response){
     const createdPost = await db.post.create({
         data: request.body,
     });
@@ -75,7 +76,7 @@ app.post("/api/v1/posts", async function (request, response){
 
 /* UPDATE ROUTE */
 
-app.put("/api/v1/posts/:id", async function (request, response){
+router.put("/api/v1/posts/:id", async function (request, response){
     const updatedPost = await db.post.update({
         where: {
             id: Number(request.params.id)
@@ -88,7 +89,7 @@ app.put("/api/v1/posts/:id", async function (request, response){
 
 /* DELETE ROUTE */
 
-app.delete("/api/v1/posts/:id", async function (request, response) {
+router.delete("/api/v1/posts/:id", async function (request, response) {
     const deletedPost = await db.post.delete({
         where: {
             id: Number(request.params.id),
