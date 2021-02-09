@@ -4,7 +4,13 @@ class PostModel {
   // access All Posts from API
   static all = () => {
     // api index route
-    return fetch(`${url}/posts`).then(res => res.json())
+
+    return fetch(`${url}/posts`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.uid}`
+      }
+    }).then(res => res.json())
   }
 
   // accessed show post by id

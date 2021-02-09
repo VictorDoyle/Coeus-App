@@ -6,14 +6,14 @@ class UserModel {
     return fetch(`${url}/users`).then(res => res.json())
   }
 
-  // accessed as GameModel.show(gameId)
+  // accessed user via ID
   static show = (id) => {
-    return fetch(`${url}/user/${id}`).then(res => res.json())
+    return fetch(`${url}/users/${id}`).then(res => res.json())
   }
 
-  // accessed as GameModel.create(gameData)
+  // create a user
   static create = (data) => {
-    return fetch(`${url}/user`, {
+    return fetch(`${url}/users`, {
       // options
       method: "POST",
       headers: {
@@ -22,6 +22,10 @@ class UserModel {
       body: JSON.stringify(data)
     }).then(res => res.json())
   } 
+  // delete route for user
+  static delete = (id) => {
+    return fetch(`${url}/users/${id}`).then(res => res.json())
+  }
 }
 
 export default UserModel

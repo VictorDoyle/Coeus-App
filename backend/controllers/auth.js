@@ -1,35 +1,42 @@
 import express from "express";
-import * as bcrypt from "bcryptjs";
+import bcrypt from "bcryptjs";
 import cors from "cors";
-import prisma from "@prisma/client"
+import prisma from "@prisma/client";
+import jwt from "jsonwebtoken";
+
 
 const db = new prisma.PrismaClient({
     log: ["info", "warn"],
     errorFormat: "pretty",
   });
 
+  
+
 const register = async (request, response) => {
+  console.log(request.body)
     try {
       const foundUser = await db.user.findUnique({
         where: {
-            email: request.body.email
+            email: request.body.email,
+            /* username: request.body.username */
         }})
-      
-      if (foundUser) {
-        response.json({message: "the User has alreadye exists", user: foundUser })
-      }
-  
+        
+        if (foundUser) {
+          response.json({message: "the User already exists", user: foundUser })
+        }
+        
       const salt = await bcrypt.genSalt(10);
       // takes each character and turns it into multiple random characters
       const hash = await bcrypt.hash(request.body.password, salt);
       request.body.password = hash;
       // create user with req.body and hashed password
-      const createdUser = await db.User.create({ ...request.body, password: hash });
+      const createdUser = await db.user.create({ data: {...request.body, password: hash, Profile: {create: {}} } });
   
       return response
         .status(201)
         .json({ status: 201, message: "success", createdUser });
     } catch (error) {
+      console.log(error)
       return response.status(500).json({
         status: 500,
         message: "Something went wrong. Please try again",
@@ -38,9 +45,11 @@ const register = async (request, response) => {
   };
   
   // POST Login Route
-  const login = async (request, res) => {
+  const login = async (request, response) => {
     try {
-      const foundUser = await db.User.findUnique({ email: request.body.email });
+      const foundUser = await db.user.findUnique({ 
+        where: {email: request.body.email }
+      });
   
       console.log(foundUser);
   

@@ -93,6 +93,7 @@ export default class Navbar extends Component {
           <NewPost />
         </Menu.Item>
 
+        <Link to={'/settings'}>
         <Menu.Item
           name='setting'
           active={activeItem === 'setting'}
@@ -101,6 +102,7 @@ export default class Navbar extends Component {
           <Icon name='setting' />
           Settings
         </Menu.Item>
+        </Link>
         </Menu.Menu>
 
       </Menu>

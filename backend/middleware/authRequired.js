@@ -1,9 +1,9 @@
-import * as jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken"
 
 const authRequired = (req, res, next) => {
   // FIXME: add jwt validation
   const bearerHeader = req.headers["authorization"];
-
+  console.log(bearerHeader)
   if (typeof bearerHeader !== "undefined") {
 
 

@@ -7,7 +7,7 @@ import cors from "cors";
 import postRoutes from "./controllers/posts.js"
 import userRoutes from "./controllers/users.js"
 import { register, login, logout } from "./controllers/auth.js"
-
+import authRequired from './middleware/authRequired.js'
 
 /* Instanced Modules */
 const app = express();
@@ -23,11 +23,11 @@ const PORT = process.env.PORT || 4000;
 app.use(express.json());
 app.use(cors())
 /* API Routes  */
-app.use('/api/v1/posts', postRoutes);
+app.use('/api/v1/posts', authRequired, postRoutes);
 app.use('/api/v1/users', userRoutes);
-app.use('/register', register);
-app.use('/login', login);
-app.use('/logout', logout);
+app.use('/api/v1/register', register);
+app.use('/api/v1/login', login);
+app.use('/api/v1/logout', logout);
 
 
 

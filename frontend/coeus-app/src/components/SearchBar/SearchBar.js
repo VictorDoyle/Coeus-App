@@ -3,7 +3,7 @@ import React from 'react'
 import { Search, Grid, Header, Segment, Label } from 'semantic-ui-react'
 
 const source = _.times(5, () => ({
-  /* title: faker.company.companyName(),
+  /* username: username.company.companyName(),
   description: faker.company.catchPhrase(),
   image: faker.internet.avatar(),
   price: faker.finance.amount(0, 100, 2, '$'), */
