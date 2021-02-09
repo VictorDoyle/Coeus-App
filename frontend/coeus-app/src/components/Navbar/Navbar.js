@@ -5,7 +5,7 @@ import './Navbar.css'
 import NewPost from './NewPost'
 import { Link } from 'react-router-dom';
 
-export default class MenuExampleLabeledIcons extends Component {
+export default class Navbar extends Component {
   state = { activeItem: 'home' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })

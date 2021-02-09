@@ -1,14 +1,18 @@
-/* using */
 import express from "express";
 import prisma from "@prisma/client";
 
 const router = express.Router();
-/* import db from "../server.js" */
+
+const db = new prisma.PrismaClient({
+    log: ["info", "warn"],
+    errorFormat: "pretty",
+  });
+
 // POSTS ROUTES
 
-/* INDEX FOR ALL POSTS  */
-router.get("/api/v1/posts", async function (request,response){
-    const posts = await db.Post.findMany({
+/* SECTION: POST ROUTES */
+router.get("/", async function (request,response){
+    const posts = await db.post.findMany({
         where: {
             published: true,
             description: {
@@ -16,7 +20,6 @@ router.get("/api/v1/posts", async function (request,response){
             },
         },
         include: {
-            User: true,
             author: true,
         },
     });
@@ -36,7 +39,7 @@ router.get("/api/v1/posts", async function (request,response){
 
 
 /* INDEX FOR ALL POSTS WHERE CONTENT IS FILTERED SPECIFICALLY VIA DESCRIPTION  */
-router.get("/api/v1/posts", async function (request,response){
+/* router.get("/", async function (request,response){
     const posts = await db.post.findMany({
         select: {
             title: true,
@@ -52,10 +55,10 @@ router.get("/api/v1/posts", async function (request,response){
     });
     response.json({ posts });
 });
-
+ */
 /* SHOW POST ROUTE */
 
-router.get("/api/v1/posts/:id", async function (request,response){
+router.get("/:id", async function (request,response){
     const post = await db.post.findUnique({
         where: {
             id: Number(request.params.id),
@@ -66,7 +69,7 @@ router.get("/api/v1/posts/:id", async function (request,response){
 
 /* CREATE ROUTE */
 
-router.post("/api/v1/posts", async function (request, response){
+router.post("/", async function (request, response){
     const createdPost = await db.post.create({
         data: request.body,
     });
@@ -76,7 +79,7 @@ router.post("/api/v1/posts", async function (request, response){
 
 /* UPDATE ROUTE */
 
-router.put("/api/v1/posts/:id", async function (request, response){
+router.put("/:id", async function (request, response){
     const updatedPost = await db.post.update({
         where: {
             id: Number(request.params.id)
@@ -89,7 +92,7 @@ router.put("/api/v1/posts/:id", async function (request, response){
 
 /* DELETE ROUTE */
 
-router.delete("/api/v1/posts/:id", async function (request, response) {
+router.delete("/:id", async function (request, response) {
     const deletedPost = await db.post.delete({
         where: {
             id: Number(request.params.id),
@@ -98,3 +101,6 @@ router.delete("/api/v1/posts/:id", async function (request, response) {
       // message return on create for testing
       response.json({message: "the post has been deleted", post: deletedPost })
 });
+
+
+export default router

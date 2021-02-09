@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react'
 import SignupForm from './SignupForm'
 
-const DividerExampleVerticalForm = () => (
+const LandingPageContainer = () => (
   <Segment placeholder>
     <Grid columns={2} relaxed='very' stackable>
       <Grid.Column>
@@ -33,4 +33,4 @@ const DividerExampleVerticalForm = () => (
   </Segment>
 )
 
-export default DividerExampleVerticalForm
+export default LandingPageContainer

@@ -3,7 +3,7 @@ import { Button, Modal, Icon } from 'semantic-ui-react'
 import NewPostForm from '../NewPostForm/NewPostForm'
 import './NewPost.css'
 
-function exampleReducer(state, action) {
+function openCloseReducer(state, action) {
   switch (action.type) {
     case 'OPEN_MODAL':
       return { open: true, dimmer: action.dimmer }
@@ -15,7 +15,7 @@ function exampleReducer(state, action) {
 }
 
 function AddNewPost() {
-  const [state, dispatch] = React.useReducer(exampleReducer, {
+  const [state, dispatch] = React.useReducer(openCloseReducer, {
     open: false,
     dimmer: undefined,
   })
@@ -35,9 +35,7 @@ function AddNewPost() {
         <Modal.Header> Create Post
         <Button circular icon='close' floated='right' onClick={() => dispatch({ type: 'CLOSE_MODAL' })}>  
           </Button>
-
         </Modal.Header>
-        {/* Add close button far right of Header */}
         <Modal.Content>
          <NewPostForm />
         </Modal.Content>

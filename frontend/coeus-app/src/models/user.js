@@ -12,14 +12,14 @@ class UserModel {
   }
 
   // accessed as GameModel.create(gameData)
-  static create = (gameData) => {
-    return fetch(`${url}/games`, {
+  static create = (data) => {
+    return fetch(`${url}/user`, {
       // options
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(gameData)
+      body: JSON.stringify(data)
     }).then(res => res.json())
   } 
 }

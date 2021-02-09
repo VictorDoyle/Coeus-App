@@ -38,7 +38,7 @@ class Home extends Component {
         <LeftSideBar />
         <RightSideBar />
         {/* below is testing to see population of posts */}
-        { this.state.posts ? postsList : 'Loading...' }
+        { this.state.posts ? postsList : Loader }
         
       </div>
     );

@@ -1,12 +1,32 @@
 import express from "express";
 import prisma from "@prisma/client";
 const router = express.Router();
-import * as db from "../server.js"
-/* USER ROUTES */
 
-// User Show
 
-router.get("/api/v1/users/:id", async function(request, response){
+const db = new prisma.PrismaClient({
+    log: ["info", "warn"],
+    errorFormat: "pretty",
+  });
+
+/* SECTION: USER ROUTES */
+
+/* INDEX FOR ALL USERS ROUTE */
+router.get("/", async function (request,response){
+    const users = await db.user.findMany({
+        include: {
+            posts: {
+                select: {
+                    title: true,
+                    description: true,
+                }
+            },
+        },
+    });
+    response.json({ users });
+});
+
+/* SHOW ONE USER BY ID ROUTE */
+router.get("/:id", async function(request, response){
     const user = await db.user.findUnique({
         where: {
             id: Number(request.params.id)
@@ -23,3 +43,40 @@ router.get("/api/v1/users/:id", async function(request, response){
     // json response for testing
     response.json({user})
 })
+
+/* CREATE USER ROUTE */
+
+router.post("/", async function (request, response){
+    const createdUser = await db.user.create({
+        data: request.body,
+    });
+    // message return on create for testing
+    response.json({message: 'The User was created', user: createdUser })
+});
+
+/* UPDATE USER ROUTE */
+
+router.put("/:id", async function (request, response){
+    const updatedUser = await db.user.update({
+        where: {
+            id: Number(request.params.id)
+        },
+        data: request.body,
+    });
+    // message return on create for testing
+    response.json({message: "the User has been updated", user: updatedUser })
+});
+
+/* DELETE ROUTE */
+
+router.delete("/:id", async function (request, response) {
+    const deletedUser = await db.user.delete({
+        where: {
+            id: Number(request.params.id),
+        }
+    });
+      // message return on create for testing
+      response.json({message: "the user has been deleted", user: deletedUser })
+});
+
+export default router
