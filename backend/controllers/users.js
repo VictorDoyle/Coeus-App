@@ -25,6 +25,26 @@ router.get("/", async function (request,response){
     response.json({ users });
 });
 
+
+/* SHOW CURRENT LOGGED IN  ROUTE */
+router.get("/verify", async function(request, response){
+    const user = await db.user.findUnique({
+        where: {
+            id: Number(request.currentUser)
+        },
+        include: {
+            posts: {
+                select: {
+                    title: true,
+                    description: true,
+                }
+            },
+        },
+    });
+    // json response for testing
+    response.json({user})
+})
+
 /* SHOW ONE USER BY ID ROUTE */
 router.get("/:id", async function(request, response){
     const user = await db.user.findUnique({

@@ -69,7 +69,7 @@ const register = async (request, response) => {
         //TODO create a json web token
         const signedJwt = await jwt.sign(
           {
-            _id: foundUser._id,
+            id: foundUser.id,
           },
           "secret key",
           {
@@ -80,7 +80,10 @@ const register = async (request, response) => {
         return response.status(200).json({
           status: 200,
           message: "Success",
-          id: foundUser._id,
+          user: foundUser,
+          username: foundUser.username,
+          profile: foundUser.profile,
+          id: foundUser.id,
           signedJwt,
         });
        

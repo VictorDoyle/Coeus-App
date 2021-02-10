@@ -9,9 +9,10 @@ const authRequired = (req, res, next) => {
 
     const token = bearerHeader.split(" ")[1];
     jwt.verify(token, "secret key", function (err, payload) {
+      console.log(payload)
       if (err) res.sendStatus(500);
-
-      req.currentUser = payload._id;
+      
+      req.currentUser = payload.id;
       next();
     });
   } else {

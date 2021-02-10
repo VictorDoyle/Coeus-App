@@ -11,14 +11,19 @@ function Login(props) {
   const setUser = useSetRecoilState(userState);
 
   function handleSubmit(event) {
+    
     event.preventDefault();
     AuthModel.login({ email, password }).then(json => {
+      
       console.log(json);
       localStorage.setItem("uid", json.signedJwt);
-      AuthModel.verify().then(data => {
+      setUser(json);
+      props.history.push("/home");
+      /* AuthModel.verify().then(data => {
+        console.log(data.user)
         setUser(data.user);
         props.history.push("/home");
-      });
+      }); */
     });
   }
 

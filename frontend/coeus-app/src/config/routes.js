@@ -23,7 +23,7 @@ export default (
         {/* TODO: add component for "postShow"  */}
         <Route path='/posts/:id' component= { Homepage } />
         <Route path='/news' component= { News } />
-        <Route path='/profile/' component= { Profile } />
+        <Route path='/profile/:id' component= { Profile } />
         <Route path='/settings' component= { Settings } />
     </Switch>
 )

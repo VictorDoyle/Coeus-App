@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(cors())
 /* API Routes  */
 app.use('/api/v1/posts', authRequired, postRoutes);
-app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/users', authRequired, userRoutes);
 app.use('/api/v1/register', register);
 app.use('/api/v1/login', login);
 app.use('/api/v1/logout', logout);

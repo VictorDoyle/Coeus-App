@@ -40,9 +40,6 @@ function AddNewPost() {
          <NewPostForm />
         </Modal.Content>
         <Modal.Actions>
-          <Button fluid onClick={() => dispatch({ type: 'CLOSE_MODAL' })}>
-            Post
-          </Button>
         </Modal.Actions>
       </Modal>
     </div>

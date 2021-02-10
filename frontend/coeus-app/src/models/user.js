@@ -3,7 +3,12 @@ const url = `http://localhost:4000/api/v1`
 class UserModel {
   // access all users
   static all = () => {
-    return fetch(`${url}/users`).then(res => res.json())
+    return fetch(`${url}/users`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.uid}`
+      }
+    }).then(res => res.json())
   }
 
   // accessed user via ID

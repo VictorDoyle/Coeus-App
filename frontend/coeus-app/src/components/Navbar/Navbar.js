@@ -1,17 +1,19 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import { Icon, Menu } from 'semantic-ui-react'
 import SearchBar from '../SearchBar/SearchBar'
 import './Navbar.css'
 import NewPost from './NewPost'
 import { Link } from 'react-router-dom';
+import { userState } from "../../recoil/atoms"
+import { useRecoilState } from "recoil"
 
-export default class Navbar extends Component {
-  state = { activeItem: 'home' }
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-  render() {
-    const { activeItem } = this.state
+function Navbar () {
+  const [ activeItem, setActiveItem] = useState("home")
+  const [ user, setUser ] = useRecoilState(userState)
+  const handleItemClick = (e, { name }) => setActiveItem( name )
 
+ 
     return (
       <div className="NavBar">
       <Menu icon='labeled'>
@@ -22,7 +24,7 @@ export default class Navbar extends Component {
         <Menu.Item
           name='graduation cap'
           active={activeItem === 'graduation cap'}
-          onClick={this.handleItemClick}
+          onClick={handleItemClick}
         >
           <Icon name='graduation cap' />
           Logo
@@ -40,7 +42,7 @@ export default class Navbar extends Component {
         <Menu.Item
           name='home'
           active={activeItem === 'home'}
-          onClick={this.handleItemClick}
+          onClick={handleItemClick}
         >
           <Icon name='home' />
           Home
@@ -51,7 +53,7 @@ export default class Navbar extends Component {
         <Menu.Item
           name='write square'
           active={activeItem === 'write square'}
-          onClick={this.handleItemClick}
+          onClick={handleItemClick}
         >
           <Icon name='write square' />
           Posts
@@ -62,7 +64,7 @@ export default class Navbar extends Component {
         <Menu.Item
           name='newspaper outline'
           active={activeItem === 'newspaper outline'}
-          onClick={this.handleItemClick}
+          onClick={handleItemClick}
         >
           <Icon name='newspaper outline' />
           News
@@ -77,10 +79,10 @@ export default class Navbar extends Component {
         <Menu.Item
           name='user'
           active={activeItem === 'user'}
-          onClick={this.handleItemClick}
+          onClick={handleItemClick}
         >
           <Icon name='user' />
-          Your Username here
+          {user && user.username }
         </Menu.Item>
         </Link>
 
@@ -88,7 +90,7 @@ export default class Navbar extends Component {
           name='plus square'
           active={activeItem === 'plus square'}
           /* TODO: CHANGE HERE TO HANDLE Click */
-          onClick={this.handleItemClick}
+          onClick={handleItemClick}
         >
           <NewPost />
         </Menu.Item>
@@ -97,7 +99,7 @@ export default class Navbar extends Component {
         <Menu.Item
           name='setting'
           active={activeItem === 'setting'}
-          onClick={this.handleItemClick}
+          onClick={handleItemClick}
         >
           <Icon name='setting' />
           Settings
@@ -109,4 +111,6 @@ export default class Navbar extends Component {
       </div>
     )
   }
-}
+
+
+export default Navbar

@@ -24,7 +24,8 @@ class PostModel {
       // options
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.uid}`
       },
       body: JSON.stringify(data)
     }).then(res => res.json())

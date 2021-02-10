@@ -28,7 +28,7 @@ class AuthModel {
       };
 
     static verify = () => {
-        return fetch(userBaseUrl, {
+        return fetch(`${userBaseUrl}/verify`, {
           method: "GET",
           // add header authorization with token
           headers: {

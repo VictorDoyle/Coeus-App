@@ -5,7 +5,3 @@ export const userState = atom({
   default: null,
 });
 
-export const cartState = atom({
-  key: "cartState",
-  default: [],
-});

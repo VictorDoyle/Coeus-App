@@ -10,14 +10,11 @@ const db = new prisma.PrismaClient({
 
 // POSTS ROUTES
 
-/* SECTION: POST ROUTES */
+/* SECTION: SHOW ALL POSTS ROUTES */
 router.get("/", async function (request,response){
     const posts = await db.post.findMany({
         where: {
             published: true,
-            description: {
-                contains: request.query.description,
-            },
         },
         include: {
             author: true,
@@ -27,15 +24,15 @@ router.get("/", async function (request,response){
 });
 
 /* INDEX FOR ALL POSTS THAT ARENT PUBLISHED OF THAT HAVE BEEN POSTED LIVE (published=false)  */
-/* TODO: Test/Implement after MVP completion */
-/* router.get("/api/v1/posts", async function (request,response){
+
+router.get("/api/v1/posts", async function (request,response){
     const posts = await db.post.findMany({
         where: {
-            published: false,
+            author: request.params.username
         }
     });
     response.json({ posts });
-}); */
+});
 
 
 /* INDEX FOR ALL POSTS WHERE CONTENT IS FILTERED SPECIFICALLY VIA DESCRIPTION  */
@@ -71,7 +68,7 @@ router.get("/:id", async function (request,response){
 
 router.post("/", async function (request, response){
     const createdPost = await db.post.create({
-        data: request.body,
+        data: {...request.body, authorId: request.currentUser },
     });
     // message return on create for testing
     response.json({message: 'Created Post', post: createdPost })
