@@ -17,7 +17,7 @@ function Profile () {
 
   const fetchData = () => {
 
-    PostModel.showByUser().then(data => {
+    PostModel.all().then(data => {
       setPosts( data.posts )
     })
 
@@ -30,8 +30,8 @@ function Profile () {
     <>
   
     <Header user={user} />
-    {/* <ProfilePosts posts={posts} /> */}
-    <ProfilePosts user={user} />
+    <ProfilePosts posts={posts} />
+    
 
     </>
   )
