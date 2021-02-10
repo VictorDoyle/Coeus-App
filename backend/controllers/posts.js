@@ -47,7 +47,7 @@ router.get("/profile/:authorId", async function (request,response){
         },
         where: {
                 // request the data from user query
-                id: Number(request.params.authorId)
+                authorId: Number(request.params.authorId)
             
         }
     });

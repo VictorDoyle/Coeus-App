@@ -23,6 +23,18 @@ class UserModel {
     }).then(res => res.json())
   }
 
+
+  // 
+  static showUser = (id) => {
+    return fetch(`${userBaseUrl}/${id}`, {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.uid}`
+        }
+
+    }).then(res => res.json())
+  }
+
   // create a user
   static create = (data) => {
     return fetch(`${url}/users`, {

@@ -49,8 +49,12 @@ function Home () {
 
 
 
-  let postsList = posts.map((post, index) => {
+ /*  let postsList = posts.map((post, index) => {
     return <Link to={`/profile/${ post.authorId }`}><UserPost {...post} key={ post.id } /></Link>
+  }) */
+
+  let postsList = posts.map((post, index) => {
+    return  <UserPost {...post} key={ post.id } />
   })
 
   

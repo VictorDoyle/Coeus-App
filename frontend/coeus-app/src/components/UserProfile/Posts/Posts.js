@@ -46,9 +46,10 @@ function ProfilePosts (props) {
     <Grid columns={6} centered>
     <Grid.Row  verticalAlign='top'>
 
-      {props.posts.map((post) => {
-          return <PostModal key={ post.id } post={post} author={post.author} />
-        })}
+    {props.posts.map((post) => {
+     
+      return <PostModal key={ post.id } post={post} />
+          })}
        
     </Grid.Row>
   </Grid>

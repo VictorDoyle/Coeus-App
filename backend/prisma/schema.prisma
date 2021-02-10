@@ -65,6 +65,8 @@ model Comment {
   content String
   author User @relation(fields: [authorId], references: [id])
   authorId Int
+  post Post @relation(fields: [postId], references: [id])
+  postId Int
 }
 
 model Like {
@@ -74,6 +76,10 @@ model Like {
   value Int @default(1)
   author User @relation(fields: [authorId], references: [id])
   authorId Int
+  post Post @relation(fields: [postId], references: [id])
+  postId Int
+
+  @@unique([authorId, postId])
 }
 
 

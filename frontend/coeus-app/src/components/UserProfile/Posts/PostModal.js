@@ -13,7 +13,7 @@ function PostModal(props) {
       open={open}
       trigger={<Button><Image src='https://picsum.photos/200' /></Button>}
     >
-      <Modal.Header>{props.author.username}</Modal.Header>
+      <Modal.Header>{props.post.author.username}</Modal.Header>
       <Modal.Content image>
         <Image size='medium' src='https://react.semantic-ui.com/images/avatar/large/rachel.png' wrapped />
         <Modal.Description>

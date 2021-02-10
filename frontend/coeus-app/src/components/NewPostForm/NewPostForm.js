@@ -1,8 +1,9 @@
 import React, { Component, useState } from 'react'
-import { Form, Button, Input } from 'semantic-ui-react'
+import { Form, Button, Input, Modal } from 'semantic-ui-react'
 import PostModel from '../../models/post'
 import EmojiBox from '../EmojiBox/EmojiBox'
 import { userState } from  "../../recoil/atoms"
+import { Link } from 'react-router-dom';
 
 function NewPostForm(props) {
   const [title, setTitle] = useState("");
@@ -20,6 +21,8 @@ function NewPostForm(props) {
       }
     });
   }
+
+  
 
   return (
     <div>
@@ -39,10 +42,11 @@ function NewPostForm(props) {
         <label>Post Category (optional)</label>
         <input placeholder='Choose A Category For Your Post' type ="text"  value={ category } onChange={(e) => setCategory(e.target.value)} />
         </Form.Field>
-        <Form.Checkbox label="Publish Now? (If unchecked, we'll save your post for later posting)" value= {published} onChange={(e) => setPublished(!published)} />
-      {/* TODO: add smiley functionality + image input box */}
+        <Form.Checkbox label="Publish Now? (If unchecked, we'll save your post for later posting)" value= { published}  onChange={(e) => setPublished(!published)} />
+
       <EmojiBox />
-      <Button type='submit' value="submit">
+       
+      <Button type='submit' value="submit" >
         Post
       </Button>
       </Form>
