@@ -1,50 +1,39 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import Loader from '../components/Loader/Loader'
-import Navbar from '../components/Navbar/Navbar'
 import Header from '../components/UserProfile/Header/Header'
 import ProfilePosts from '../components/UserProfile/Posts/Posts';
 import PostModel from '../models/post'
 import UserModel from '../models/user'
+/* user */
 
-class Profile extends Component {
-  state = {
-    user: [],
-    posts: [],
-  }
 
-  componentDidMount() {
-    this.fetchData()
-  }
+function Profile () {
+  const [ user, setUser ] = useState([])
+  const [ posts, setPosts] = useState([])
 
-  fetchData = () => {
+  useEffect(function () {
+    fetchData();
+  }, []);
+
+  const fetchData = () => {
+
     PostModel.all().then(data => {
-      this.setState({ posts: data.posts })
+      setPosts(data.posts )
     })
+
     UserModel.show().then(data => {
-      this.setState({user: data.user})
+      setUser( data.user )
     })
   }
-  
-  render() {
-      let postsList = this.state.posts.map((post, index) => {
-      return <Link to={`/posts/${ post.id }`}><ProfilePosts {...post} key={ post.id } /></Link>
-    })
 
-    return (
-      <>
-     
-      <Header />
-      <ProfilePosts /> 
-      {/* below is testing to see population of posts */}
-      { this.state.posts ? postsList : Loader }
-        
-     
-      </>
-    );
-  } 
+  return (
+    <>
+    <Header user={user} />
+    <ProfilePosts posts={posts} />
+
+    </>
+  )
 }
-
 
 
 export default Profile;

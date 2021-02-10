@@ -75,7 +75,7 @@ function Navbar () {
         {/* user profile + settings side */}
         <Menu.Menu position='right'> 
 
-        <Link to={'/profile/:id'}>
+        <Link to={`/profile`}>
         <Menu.Item
           name='user'
           active={activeItem === 'user'}

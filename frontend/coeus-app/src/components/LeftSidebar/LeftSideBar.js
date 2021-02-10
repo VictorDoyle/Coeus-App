@@ -3,15 +3,9 @@ import { Icon, Menu, Header, Feed } from 'semantic-ui-react'
 import '../LeftSidebar/LeftSideBar.css'
 import Notification from '../../components/Notification/Notification'
 
-export default class MenuExampleLabeledIconsVertical extends Component {
-  state = { activeItem: 'gamepad' }
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
-  render() {
-    const { activeItem } = this.state
-
-    return (
+function LeftSideBar (props) {
+  return(
     <div className="leftSideBar"> 
         <Menu borderless icon='labeled' vertical>
             <Menu.Item
@@ -39,6 +33,11 @@ export default class MenuExampleLabeledIconsVertical extends Component {
 
         </Menu>
     </div>
-    )
-  }
+  )
 }
+
+
+
+
+export default LeftSideBar
+

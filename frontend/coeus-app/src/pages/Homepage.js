@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 /* Components */
 import LeftSideBar from '../components/LeftSidebar/LeftSideBar';
@@ -10,45 +10,51 @@ import UserPost from '../components/Post/UserPost';
 import { useRecoilState } from "recoil";
 /* Models */
 import PostModel from '../models/post'
+import UserModel from '../models/user';
 /* User info */
-import { userState } from "../recoil/atoms.js"
+import { userState } from "../recoil/atoms"
 
+function Home () {
+  const [user, setCurrentUser] = useState([])
+  const [users, setUsers] = useState([])
+  const [posts, setPosts] = useState([])
 
-class Home extends Component {
-  state = {
-    posts: [],
-    users: [],
-  }
+  useEffect(function () {
+    fetchData();
+  }, [])
 
-
-  componentDidMount() {
-    this.fetchData()
-  }
-
-  fetchData = () => {
+  const fetchData = () => {
     PostModel.all().then(data => {
       console.log(data)
-      this.setState({ posts: data.posts })
+      setPosts( data.posts )
+    })
+    UserModel.all().then(data => {
+      console.log(data)
+      setUsers(data.users )
+    })
+    UserModel.show().then(data => {
+      console.log(data)
+      setCurrentUser(data.user )
     })
   }
-  
-  render() {
-      let postsList = this.state.posts.map((post, index) => {
-      return <Link to={`/posts/${ post.id }`}><UserPost {...post} key={ post.id } /></Link>
-    })
 
-    return (
-      <div className="homepage">
-        {/* <UserPostContainer/> */}
-        <LeftSideBar />
-        <RightSideBar />
-        {/* below is testing to see population of posts */}
-        { this.state.posts ? postsList : Loader }
-    
-        
-      </div>
-    );
-  } 
+  let postsList = posts.map((post, index) => {
+    return <Link to={`/posts/${ post.id }`}><UserPost {...post} key={ post.id } /></Link>
+  })
+ 
+  return (
+<>
+    <div className="homepage">
+      <LeftSideBar user={user} />
+      <RightSideBar user={user} />
+      
+      { posts ? postsList : Loader }
+    </div>
+</>
+)
+
 }
+
+ 
 
 export default Home;

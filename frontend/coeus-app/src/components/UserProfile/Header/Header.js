@@ -1,27 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import { Button, Image, Item, Container } from 'semantic-ui-react'
+import { userState } from '../../../recoil/atoms';
 import emptyAvatarExample from '../../../testing/placeholders/emptyAvatarExample.png'
 import FollowButton from './FollowButton'
+import Loader from '../../Loader/Loader'
 
 
-const ProfileHeader = () => (
+function ProfileHeader(props) {
+    console.log(props)
+    return( 
+        <>
+        { props ? (
+
 <Container> 
-    <Item.Group relaxed>
-        <Item>
-        <Item.Image size='small' src={emptyAvatarExample} circular />
+        <Item.Group relaxed>
+            <Item>
+            <Item.Image size='small' src={emptyAvatarExample} circular />
 
-        <Item.Content verticalAlign='middle'>
-            <Item.Header> USERNAME OF USER HERE </Item.Header>
-            <Item.Description>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</Item.Description>
-            <Item.Extra>
-            <FollowButton />
-            </Item.Extra>
-        </Item.Content>
-        </Item>
+            <Item.Content verticalAlign='middle'>
+                <Item.Header> {props.user.username} </Item.Header>
+                <Item.Description>{/* {props.user.user.profile} */}</Item.Description>
+                <Item.Extra>
+                <FollowButton />
+                </Item.Extra>
+            </Item.Content>
+            </Item>
 
-    </Item.Group>
+        </Item.Group>
 </Container>
+
+) : Loader } 
+</>
 )
+}
+
 
 export default ProfileHeader
 

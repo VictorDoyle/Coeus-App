@@ -1,4 +1,5 @@
 const url = `http://localhost:4000/api/v1`
+const userBaseUrl = `http://localhost:4000/api/v1/users`
 
 class UserModel {
   // access all users
@@ -13,7 +14,13 @@ class UserModel {
 
   // accessed user via ID
   static show = (id) => {
-    return fetch(`${url}/users/${id}`).then(res => res.json())
+    return fetch(`${userBaseUrl}/verify`, {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.uid}`
+        }
+
+    }).then(res => res.json())
   }
 
   // create a user

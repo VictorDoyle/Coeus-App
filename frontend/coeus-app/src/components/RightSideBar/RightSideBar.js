@@ -3,16 +3,9 @@ import { Icon, Menu, Header } from 'semantic-ui-react'
 import '../RightSideBar/RightSideBar.css'
 import FriendsList from '../../components/FriendsList/FriendsList'
 
-export default class RightSideBar extends Component {
-  state = { activeItem: 'gamepad' }
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
-  render() {
-    /* keep state for remounting main components of friends user profile */
-    const { activeItem } = this.state
-
-    return (
+function RightSideBar(props) {
+  return(
     <div className="rightSideBar">
         <Menu icon='labeled' vertical>
           <Menu.Item>
@@ -27,6 +20,6 @@ export default class RightSideBar extends Component {
 
         </Menu>
     </div>
-    )
-  }
+  )
 }
+export default  RightSideBar 
