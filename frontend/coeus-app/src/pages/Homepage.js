@@ -11,6 +11,7 @@ import { useRecoilState } from "recoil";
 /* Models */
 import PostModel from '../models/post'
 import UserModel from '../models/user';
+import PostModal from '../components/UserProfile/Posts/PostModal'
 /* User info */
 import { userState } from "../recoil/atoms"
 
@@ -38,10 +39,21 @@ function Home () {
     })
   }
 
+  /*TODO: For every 5 posts, fetch Advice Slip API */
+  // Get request = https://api.adviceslip.com/advice
+  /* callback/ string To define your own callback function name and return the JSON in a function wrapper (as JSONP), add the parameter callback with your desired name as the value. */
+  // render advice slips in simple container boxes or UserPosts
+
+  //TODO: For every 10 posts, fetch https://uselessfacts.jsph.pl/random.json
+  // render same as fetchAdviceSlip
+
+
+
   let postsList = posts.map((post, index) => {
     return <Link to={`/posts/${ post.id }`}><UserPost {...post} key={ post.id } /></Link>
   })
- 
+
+  
   return (
 <>
     <div className="homepage">

@@ -1,8 +1,10 @@
 /* animation for overall background of Landing Page  */
 
+
 .landingPageAll {
     background: linear-gradient(271deg, #006466, #065a60, #0b525b, #144552, #1b3a4b, #212f45, #272640, #312244, #3e1f47, #4d194d);
     background-size: 2000% 2000%;
+    height: 100vh;
     z-index: 1;
 
     -webkit-animation: GradientAnimationAngled 41s ease infinite;
@@ -20,26 +22,10 @@
     100%{background-position:0% 36%}
 }
 
-/* half page Left for Info and Right for Login/Signup */
-
-.leftSideLanding {
-    float: left;
-    width:50%;
-    text-align: center;
+.landingPageText, .ui, .header,  .statistics, .statistic , .label,  .value {
+    color: whitesmoke;
 }
 
-.leftSideText {
-    padding-top: 30%;
+.ui , .header {
+    color: white
 }
-.rightSideLanding {
-    float: right;
-    width:50%;
-}
-
-.signupFormLanding {
-    position: absolute;
-    margin-left: 10%;
-    top: 25%;
-    bottom: 25%;
-}
-
