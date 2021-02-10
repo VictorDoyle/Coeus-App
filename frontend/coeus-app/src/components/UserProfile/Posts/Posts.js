@@ -38,18 +38,17 @@ export default ProfilePosts
 
 function ProfilePosts (props) {
 
-  console.log(props)
+  console.log(props, "this")
   
   return(
   
   <>
     <Grid columns={6} centered>
     <Grid.Row  verticalAlign='top'>
-       
-            {props.posts.map((post) => {
-              
-          return (<PostModal /* {...post} */ key={ post.id } post={post} author={post.author} />)
-        })}
+
+        {/* {props.user.posts.map((post) => {
+          return <PostModal key={ post.id } post={post} author={post.author} />
+        })} */}
        
     </Grid.Row>
   </Grid>
@@ -58,3 +57,13 @@ function ProfilePosts (props) {
 }
 
 export default ProfilePosts
+
+
+ {/* {props.posts.map((post) => {
+          return <PostModal key={ post.id } post={post} author={post.author} />
+        })} */}
+
+       /*  {props.posts.map((post) => {
+          if (props.posts.authorId === props.author[1]) {
+      return (<PostModal key={ post.id } post={post} author={post.author} />)
+          }})} */

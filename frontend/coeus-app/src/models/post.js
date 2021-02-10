@@ -15,7 +15,22 @@ class PostModel {
 
   // accessed show post by id
   static show = (id) => {
-    return fetch(`${url}/posts/${id}`).then(res => res.json())
+    return fetch(`${url}/posts/${id}`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.uid}`
+      }
+  }).then(res => res.json())
+  }
+
+   // access all posts by by specifc user
+   static showByUser = (id) => {
+    return fetch(`${url}/posts/profile/${id}`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.uid}`
+      }
+  }).then(res => res.json())
   }
 
   // accessed create post route 

@@ -23,7 +23,7 @@ model User {
   password String 
   profile Profile?
 
-  //all posts user has made
+  //all posts user has made - One To Many
   posts Post[]
 }
 
@@ -33,7 +33,6 @@ model Profile {
   user   User    @relation(fields: [userId], references: [id])
   userId Int     @unique
 }
-// FIXME: create auto Profile link to every User made
 
 // Generating the Post Model
 
@@ -52,6 +51,29 @@ model Post {
   // store userId inside table for prisma to relate to post
   author    User     @relation(fields: [authorId], references: [id])
   authorId  Int
+
+  // One To Many // Post To Comments
+  comments Comment[]
+  // One To Many // Post To Likes
+  likes Like[]
+}
+
+model Comment {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  content String
+  author User @relation(fields: [authorId], references: [id])
+  authorId Int
+}
+
+model Like {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  value Int @default(1)
+  author User @relation(fields: [authorId], references: [id])
+  authorId Int
 }
 
 

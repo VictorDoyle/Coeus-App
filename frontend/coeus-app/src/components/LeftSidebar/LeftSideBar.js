@@ -2,9 +2,13 @@ import React, { Component } from 'react'
 import { Icon, Menu, Header, Feed } from 'semantic-ui-react'
 import '../LeftSidebar/LeftSideBar.css'
 import Notification from '../../components/Notification/Notification'
+import { userState } from "../../recoil/atoms"
+import { useRecoilState } from "recoil"
 
 
 function LeftSideBar (props) {
+  const [ user, setUser ] = useRecoilState(userState)
+
   return(
     <div className="leftSideBar"> 
         <Menu borderless icon='labeled' vertical>
@@ -17,7 +21,7 @@ function LeftSideBar (props) {
               <Header as='h3'>
               <Icon name='user' /> 
                 <Header.Content>
-                Your Username Here
+                {user && user.username }
                 </Header.Content>
               </Header>
             </Menu.Item>

@@ -1,17 +1,34 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Icon, Menu } from 'semantic-ui-react'
 import SearchBar from '../SearchBar/SearchBar'
 import './Navbar.css'
 import NewPost from './NewPost'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import { userState } from "../../recoil/atoms"
 import { useRecoilState } from "recoil"
-
+import UserModel from '../../models/user'
 
 function Navbar () {
   const [ activeItem, setActiveItem] = useState("home")
+  /* find currentUser via recoilstate (jwt token) */
   const [ user, setUser ] = useRecoilState(userState)
   const handleItemClick = (e, { name }) => setActiveItem( name )
+
+    /* findUsers for searchbar query set */
+    const [users, setUsers] = useState([])
+
+    useEffect(function () {
+      fetchData();
+    }, [])
+  
+  
+    const fetchData = () => {
+      UserModel.all().then(data => {
+        console.log(data)
+        setUsers( data.users )
+      })}
+    
+
 
  
     return (
@@ -32,7 +49,7 @@ function Navbar () {
         </Link>
 
         <Menu.Item>
-          <SearchBar/>
+          <SearchBar users={users} />
         </Menu.Item>
         </Menu.Menu>
 
@@ -75,7 +92,7 @@ function Navbar () {
         {/* user profile + settings side */}
         <Menu.Menu position='right'> 
 
-        <Link to={`/profile`}>
+        <Link to={`/profile/${user && user.id }`}>
         <Menu.Item
           name='user'
           active={activeItem === 'user'}

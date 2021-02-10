@@ -22,10 +22,3 @@
     100%{background-position:0% 36%}
 }
 
-.landingPageText, .ui, .header,  .statistics, .statistic , .label,  .value {
-    color: whitesmoke;
-}
-
-.ui , .header {
-    color: white
-}

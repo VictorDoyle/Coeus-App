@@ -25,7 +25,7 @@ router.get("/", async function (request,response){
 
 /* INDEX FOR ALL POSTS THAT ARENT PUBLISHED OF THAT HAVE BEEN POSTED LIVE (published=false)  */
 
-router.get("/api/v1/posts", async function (request,response){
+router.get("/unpublished", async function (request,response){
     const posts = await db.post.findMany({
         where: {
             author: request.params.username
@@ -35,24 +35,26 @@ router.get("/api/v1/posts", async function (request,response){
 });
 
 
-/* INDEX FOR ALL POSTS WHERE CONTENT IS FILTERED SPECIFICALLY VIA DESCRIPTION  */
-/* router.get("/", async function (request,response){
+/* INDEX FOR ALL POSTS WHERE USER IS THE AUTHOR (FOR PROFILE POSTS SHOW PAGE)  */
+router.get("/profile/:authorId", async function (request,response){
+    
     const posts = await db.post.findMany({
         select: {
             title: true,
             description: true,
             category: true,
+            author: true,
         },
         where: {
-            description: {
                 // request the data from user query
-                contains: request.query.description
-            }
+                id: Number(request.params.authorId)
+            
         }
     });
     response.json({ posts });
 });
- */
+
+
 /* SHOW POST ROUTE */
 
 router.get("/:id", async function (request,response){

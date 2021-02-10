@@ -1,19 +1,21 @@
 import _ from 'lodash'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Search, Grid, Header, Segment, Label } from 'semantic-ui-react'
 
-const source = _.times(5, () => ({
-  /* username: username.company.companyName(),
-  description: faker.company.catchPhrase(),
-  image: faker.internet.avatar(),
-  price: faker.finance.amount(0, 100, 2, '$'), */
-}))
 
 const initialState = {
   loading: false,
   results: [],
   value: '',
+  props: [],
 }
+
+  const source = _.times(5, () => ({
+    /* username: props.users.username() */
+    /* description: faker.company.catchPhrase(),
+    image: faker.internet.avatar(),
+    price: faker.finance.amount(0, 100, 2, '$'), */
+  }))
 
 function searchReducer(state, action) {
   switch (action.type) {
@@ -33,7 +35,7 @@ function searchReducer(state, action) {
 
 const resultRenderer = ({ title }) => <Label content={title} />
 
-function SearchBar() {
+function SearchBar(props) {
   const [state, dispatch] = React.useReducer(searchReducer, initialState)
   const { loading, results, value } = state
 
@@ -53,7 +55,7 @@ function SearchBar() {
 
       dispatch({
         type: 'FINISH_SEARCH',
-        results: _.filter(source, isMatch),
+        results: _.filter(props.users.username, isMatch),
       })
     }, 300)
   }, [])
@@ -77,19 +79,6 @@ function SearchBar() {
           value={value}
         />
       </Grid.Column>
-{/* below is testing output of search function */}
-    {/*   <Grid.Column width={10}>
-        <Segment>
-          <Header>State</Header>
-          <pre style={{ overflowX: 'auto' }}>
-            {JSON.stringify({ loading, results, value }, null, 2)}
-          </pre>
-          <Header>Options</Header>
-          <pre style={{ overflowX: 'auto' }}>
-            {JSON.stringify(source, null, 2)}
-          </pre>
-        </Segment>
-      </Grid.Column> */}
     </Grid>
   )
 }

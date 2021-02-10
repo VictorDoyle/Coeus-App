@@ -30,7 +30,7 @@ const register = async (request, response) => {
       const hash = await bcrypt.hash(request.body.password, salt);
       request.body.password = hash;
       // create user with req.body and hashed password
-      const createdUser = await db.user.create({ data: {...request.body, password: hash, Profile: {create: {}} } });
+      const createdUser = await db.user.create({ data: {...request.body, password: hash, profile: {create: {}} } });
   
       return response
         .status(201)
