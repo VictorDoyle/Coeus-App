@@ -3,7 +3,6 @@ import { Card, Icon, Image } from 'semantic-ui-react'
 import emptyAvatarExample from '../../testing/placeholders/emptyAvatarExample.png'
 import './UserPost.css'
 import CommentBox from '../Comments/Comments'
-
 import PostModel from '../../models/post'
 import LikeModel from '../../models/like';
 
@@ -100,7 +99,7 @@ function UserPost (props) {
           Like
         </a> */}
       </Card.Content>
-      <CommentBox/>
+      <CommentBox {...post}/>
     </Card>
   )
 }

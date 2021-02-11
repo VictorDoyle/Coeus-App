@@ -1,8 +1,18 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Button, Comment, Form } from 'semantic-ui-react'
-
+import CommentModel from '../../models/comment'
 
 function CommentBox () {
+  const [content, setComment] = useState("");
+  
+  function handleCommentSubmit(event) {
+    event.preventDefault();
+    CommentModel.create({ content}).then(json => {
+      if (json.status === 201) {
+        console.log(json);
+      }
+    });
+  }
   return(
     <Comment.Group>
     <Comment>
@@ -44,7 +54,7 @@ function CommentBox () {
 
     <Form reply>
       <Form.TextArea />
-      <Button content='Add Comment' labelPosition='left' icon='edit' primary />
+      <Button content='Add Comment' value={ content }  onChange={(e) => setComment(e.target.value)} labelPosition='left' icon='edit' primary onClick={handleCommentSubmit}/>
     </Form>
   </Comment.Group>
 
