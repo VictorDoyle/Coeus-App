@@ -26,8 +26,13 @@ class LikeModel {
   } 
 
   // accessed delete route of like
-  static delete = (id) => {
-    return fetch(`${url}/${id}`).then(res => res.json())
+  /* FIXME: improper use of delete - need to pass in an ID but no Id on URL to query from since inside of post comp */
+  static delete = () => {
+    return fetch(`${url}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.uid}`
+      },
+    }).then(res => res.json())
   }
 }
 

@@ -19,7 +19,7 @@ function Home (props) {
   const [user, setCurrentUser] = useState([])
   const [users, setUsers] = useState([])
   const [posts, setPosts] = useState([])
-  const [likes, setLike] = useState("");
+  const [likes, setLike] = useState([]);
 
   useEffect(function () {
     fetchData();

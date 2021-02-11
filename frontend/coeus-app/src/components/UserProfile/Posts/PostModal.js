@@ -1,10 +1,18 @@
 import React , { useEffect, useState } from 'react'
 import { Button, Header, Icon, Modal, Image } from 'semantic-ui-react'
 import ProfilePosts from './Posts'
-
+import LikeModel from '../../../models/like'
 
 function PostModal(props) {
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = useState(false)
+
+
+  function handleLike(event) {
+    event.preventDefault();
+    LikeModel.create(props.post).then(json => {
+        console.log(json, "liked!"); 
+    });
+  }
 
   return (
     <Modal
@@ -24,7 +32,7 @@ function PostModal(props) {
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        <Button color='black' onClick={() => setOpen(false)}>
+        <Button color='black' onClick={handleLike}>
           Like
         </Button>
         <Button

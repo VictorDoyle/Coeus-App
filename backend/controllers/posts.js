@@ -18,6 +18,8 @@ router.get("/", async function (request,response){
         },
         include: {
             author: true,
+            comments: true,
+            likes: true,
         },
     });
     response.json({ posts });
@@ -44,6 +46,7 @@ router.get("/profile/:authorId", async function (request,response){
             description: true,
             category: true,
             author: true,
+            comments: true,
         },
         where: {
                 // request the data from user query

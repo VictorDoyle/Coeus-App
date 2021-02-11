@@ -79,14 +79,5 @@ model Like {
   authorId Int
   post Post @relation(fields: [postId], references: [id])
   postId Int
-
-  @@unique([authorId, postId])
 }
-
-
-// TODO: Comments (Many to Many)
-// Friends/Followers (Many followers to One User) || (One User follow to One User)
-// Posts has many comments to One post -- 
-// Posts has many likes to One Post
-
 

@@ -36,10 +36,14 @@ router.post("/", async function (request,response){
 
 /* Delete the route */
 
-router.delete("/:id", async function (request, response) {
+router.delete("/", async function (request, response) {
+    const { authorId, id } = request.body
     const deletedLike = await db.like.delete({
         where: {
-            id: Number(request.params.id),
+            data: {
+                authorId,
+                postId: id,
+            }
         }
     });
       // message return on create for testing
