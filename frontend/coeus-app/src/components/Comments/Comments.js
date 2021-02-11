@@ -2,34 +2,49 @@ import React, {useState} from 'react'
 import { Button, Comment, Form } from 'semantic-ui-react'
 import CommentModel from '../../models/comment'
 
-function CommentBox () {
+function CommentBox (props) {
   const [content, setComment] = useState("");
+  const [postId, setpostId ] = useState("");
+
+  console.log("this post is", props.id)
   
   function handleCommentSubmit(event) {
     event.preventDefault();
-    CommentModel.create({ content}).then(json => {
+    CommentModel.create({ content, postId:props.id}).then(json => {
       if (json.status === 201) {
+        console.log(json, "user commented"); 
         console.log(json);
       }
     });
   }
+
+
+  /* mapping out comments */
+  let commentsList = props.comments.map((comment, index) => {
+    return  <Comment {...comment} key={ comment.id } /> 
+
+  })
+
+
+
   return(
     <Comment.Group>
+     {props.comments.map((comment, index) => {
+    /* return  <Comment {...comment} key={ comment.id } />  */
+    return  <Comment {...comment} key={ comment.id } />
+
+  })}
     <Comment>
+
       <Comment.Avatar as='a' src='https://react.semantic-ui.com/images/avatar/small/joe.jpg' />
       <Comment.Content>
-        <Comment.Author>Joe Henderson</Comment.Author>
+        <Comment.Author>{/* {comment.authorId} */}</Comment.Author>
         <Comment.Metadata>
-          <div>1 day ago</div>
+          <div>{/* {comment.createdAt} */}</div>
         </Comment.Metadata>
         <Comment.Text>
           <p>
-            The hours, minutes and seconds stand as visible reminders that your
-            effort put them all there.
-          </p>
-          <p>
-            Preserve until your next run, when the watch lets you see how
-            Impermanent your efforts are.
+          {/* {comment.content} */}
           </p>
         </Comment.Text>
         <Comment.Actions>
@@ -38,23 +53,9 @@ function CommentBox () {
       </Comment.Content>
     </Comment>
 
-    <Comment>
-      <Comment.Avatar as='a' src='https://react.semantic-ui.com/images/avatar/small/christian.jpg' />
-      <Comment.Content>
-        <Comment.Author>Christian Rocha</Comment.Author>
-        <Comment.Metadata>
-          <div>2 days ago</div>
-        </Comment.Metadata>
-        <Comment.Text>I re-tweeted this.</Comment.Text>
-        <Comment.Actions>
-          <Comment.Action>Reply</Comment.Action>
-        </Comment.Actions>
-      </Comment.Content>
-    </Comment>
-
     <Form reply>
-      <Form.TextArea />
-      <Button content='Add Comment' value={ content }  onChange={(e) => setComment(e.target.value)} labelPosition='left' icon='edit' primary onClick={handleCommentSubmit}/>
+      <Form.TextArea value={ content }  onChange={(e) => setComment(e.target.value)}  />
+      <Button content='Add Comment' labelPosition='left' icon='edit' primary onClick={handleCommentSubmit}/>
     </Form>
   </Comment.Group>
 

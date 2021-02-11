@@ -12,6 +12,7 @@ const db = new prisma.PrismaClient({
 router.get("/", async function (request,response){
     const comments = await db.comment.findMany({
         include: {
+            author: true,
             authorId: true,
             content: true,
             postId: true,
@@ -23,7 +24,9 @@ router.get("/", async function (request,response){
 /* create comments */
 router.post("/", async function (request, response){
     const createdComment = await db.comment.create({
-        data: {...request.body, authorId: request.currentUser },
+        data: {...request.body,
+            authorId: request.currentUser,
+         },
     });
     // message return on create for testing
     response.json({message: 'Created Comment', comment: createdComment })

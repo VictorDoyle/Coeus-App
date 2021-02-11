@@ -99,7 +99,7 @@ function UserPost (props) {
           Like
         </a> */}
       </Card.Content>
-      <CommentBox {...post}/>
+      <CommentBox {...props}/>
     </Card>
   )
 }
