@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useReducer } from 'react';
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Icon, Image, Button, Label } from 'semantic-ui-react'
 import emptyAvatarExample from '../../testing/placeholders/emptyAvatarExample.png'
 import './UserPost.css'
 import CommentBox from '../Comments/Comments'
 import PostModel from '../../models/post'
 import LikeModel from '../../models/like';
+import CommentShow from '../Comments/CommentShow';
 
 /* function likeUnlikeReducer(state, action) {
   switch (action.type) {
@@ -17,12 +18,12 @@ import LikeModel from '../../models/like';
   }
 } */
 
-function likeUnlikeReducer(prevState, action) {
+function likeUnlikeReducer(state, action) {
   switch (action.type) {
     case 'LIKE_POST':
-      return {  ...prevState, liked: true }
+      return {  ...state, liked: true }
     case 'UNLIKE_POST':
-      return { ...prevState, liked: false }
+      return { ...state, liked: false }
     default:
       throw new Error()
   }
@@ -41,7 +42,7 @@ function UserPost (props) {
   
   useEffect(function () {
     fetchData();
-  }, [])
+  }, [ ])
   
   const fetchData = () => {
     PostModel.show().then(data => {
@@ -59,7 +60,7 @@ function UserPost (props) {
 
   function handleDislike(event) {
     event.preventDefault();
-    LikeModel.delete(props).then(json => {
+    LikeModel.delete(props.id).then(json => {
         console.log(json, "unliked :( " ); 
     });
   }
@@ -83,80 +84,22 @@ function UserPost (props) {
         </Card.Description>
       </Card.Content>
       <Card.Content extra>
-      <a  onClick={() => dispatch({ type: 'LIKE_POST' }), handleDislike}> <Icon name='heart' color={"grey"}  /> {props.likes.length} Likes</a>
+      {/* <a  onClick={() => dispatch({ type: 'LIKE_POST' }), handleDislike}> <Icon name='heart' color={"grey"}  /> {props.likes.length} Dislike </a> */}
 
-      {/* {state ? <a  onClick={() => dispatch({ type: 'LIKE_POST' }), handleLike}> <Icon name='heart' color={"grey"}  /> Like </a> 
+      {liked ? <a  onClick={() => dispatch({ type: 'LIKE_POST' }), handleLike}> <Icon name='heart' color={"grey"}  /> {props.likes.length} Likes </a> 
       : <a  onClick={() => dispatch({ type: 'UNLIKE_POST' }), handleDislike}> <Icon name='heart' color={"red"}  />  Unlike </a>}
 
- */}
+     {/*  if state = liked do UNLIKE POST else if state = not liked do LIKE POST */}
 
+      </Card.Content>
 
-
-
-        {/* <a  onClick={() => dispatch({ type: 'OPEN_MODAL' }), handleLike}>
-        
-          <Icon name='heart' color={"red"}  />
-          Like
-        </a> */}
+      <Card.Content>
+      <Icon name='comment' color={"blue"}/> {props.comments.length} Comments
       </Card.Content>
       <CommentBox {...props}/>
+      {/* <CommentShow {...props} /> */}
     </Card>
   )
 }
 
-
-
-
-
-  {/* if like.post.id === null ? <> <Icon name='heart' color={"blue"} />  Unlike </>: <Icon name='heart {red}' />  */}
-/* 
-
-class UserPost extends Component {
-  state = {
-    post: {},
-   
-  }
-
-  componentDidMount() {
-    this.fetchData()
-  }
-
-  fetchData = () => {
-    PostModel.show(this.state.currentPost).then(data => {
-      this.setState({ post: data.post })
-    })
-  }
-  
-
-  render() {
-
-    return (
-    <Card className="userPostCard" centered>
-      <Card.Content>
-      <Card.Header>{this.props.author.username}</Card.Header>
-      </Card.Content>
-      <Image src={emptyAvatarExample} wrapped ui={false} />
-      <Card.Content>
-        <Card.Header>{this.props.title}</Card.Header>
-        <Card.Meta>
-          
-          <span className='date'>{this.props.createdAt}</span>
-        </Card.Meta>
-        <Card.Description>
-          {this.props.description}
-        </Card.Description>
-      </Card.Content>
-      <Card.Content extra>
-        <a>
-          <Icon name='heart' />
-          Like
-        </a>
-      </Card.Content>
-      <CommentBox/>
-    </Card>
-    )
-  };
-
-}
- */
 export default UserPost

@@ -2,18 +2,26 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 /* Components */
 import LeftSideBar from '../components/LeftSidebar/LeftSideBar';
-import Loader from '../components/Loader/Loader'
 import Navbar from '../components/Navbar/Navbar'
 import UserPostContainer from '../components/Post/UserPostContainer';
 import RightSideBar from '../components/RightSideBar/RightSideBar';
 import UserPost from '../components/Post/UserPost';
-import { useRecoilState } from "recoil";
 /* Models */
 import PostModel from '../models/post'
 import UserModel from '../models/user';
 import PostModal from '../components/UserProfile/Posts/PostModal'
 /* User info */
+import { useRecoilState } from "recoil";
 import { userState } from "../recoil/atoms"
+/* Loader for homepage */
+import HomePostLoader from '../components/Loader/HomePostLoader';
+/* CSS */
+
+
+
+
+
+
 
 function Home (props) {
   const [user, setCurrentUser] = useState([])
@@ -55,7 +63,7 @@ function Home (props) {
   }) */
 
   let postsList = posts.map((post, index) => {
-    return  <UserPost {...post} key={ post.id } />
+    return  <Link className="homePostLinks" to={`/profile/${post.authorId}`}><UserPost {...post} key={ post.id } /> </Link>
   })
 
   
@@ -64,8 +72,9 @@ function Home (props) {
     <div className="homepage">
       <LeftSideBar user={user} />
       <RightSideBar user={user} />
-      
-      { posts ? postsList : Loader }
+
+      { posts ? postsList : HomePostLoader }
+
     </div>
 </>
 )

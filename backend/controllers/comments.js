@@ -13,9 +13,6 @@ router.get("/", async function (request,response){
     const comments = await db.comment.findMany({
         include: {
             author: true,
-            authorId: true,
-            content: true,
-            postId: true,
         },
     });
     response.json({ comments });

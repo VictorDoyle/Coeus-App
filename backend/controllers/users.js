@@ -45,6 +45,21 @@ router.get("/verify", async function(request, response){
     response.json({user})
 })
 
+/* UPDATE USER ROUTE */
+
+router.put("/edit", async function (request, response){
+    console.log(request.body)
+    const updatedUser = await db.user.update({
+        where: {
+            id: Number(request.currentUser)
+        },
+        data: request.body,
+    });
+    // message return on create for testing
+    response.json({message: "the User has been updated", user: updatedUser })
+});
+
+
 /* SHOW ONE USER BY ID ROUTE */
 router.get("/:id", async function(request, response){
     const user = await db.user.findUnique({
@@ -74,18 +89,6 @@ router.post("/", async function (request, response){
     response.json({message: 'The User was created', user: createdUser })
 });
 
-/* UPDATE USER ROUTE */
-
-router.put("/:id", async function (request, response){
-    const updatedUser = await db.user.update({
-        where: {
-            id: Number(request.params.id)
-        },
-        data: request.body,
-    });
-    // message return on create for testing
-    response.json({message: "the User has been updated", user: updatedUser })
-});
 
 /* DELETE ROUTE */
 

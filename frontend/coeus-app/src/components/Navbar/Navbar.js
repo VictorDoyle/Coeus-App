@@ -8,10 +8,14 @@ import { userState } from "../../recoil/atoms"
 import { useRecoilState } from "recoil"
 import UserModel from '../../models/user'
 
+
+
+
 function Navbar () {
   const [ activeItem, setActiveItem] = useState("home")
   /* find currentUser via recoilstate (jwt token) */
   const [ user, setUser ] = useRecoilState(userState)
+  
   const handleItemClick = (e, { name }) => setActiveItem( name )
 
     /* findUsers for searchbar query set */
@@ -112,14 +116,14 @@ function Navbar () {
           <NewPost />
         </Menu.Item>
 
-        <Link to={'/settings'}>
+        <Link to={`/settings/${user && user.id }`} >
         <Menu.Item
           name='setting'
           active={activeItem === 'setting'}
           onClick={handleItemClick}
         >
           <Icon name='setting' />
-          Settings
+          Settings 
         </Menu.Item>
         </Link>
         </Menu.Menu>

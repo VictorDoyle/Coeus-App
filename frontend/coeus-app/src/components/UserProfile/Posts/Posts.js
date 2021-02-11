@@ -5,36 +5,6 @@ import '../Posts/Posts.css'
 import Loader from '../../Loader/Loader'
 import PostModal from '../Posts/PostModal'
 
-/* 
-
-function ProfilePosts (props) {
-
-  console.log(props)
-  
-  return(
-  
-  <>
-    <Grid columns={6} centered>
-    <Grid.Row  verticalAlign='top'>
-       <Grid.Column>
-       <Image src='https://picsum.photos/200' />
-      
-      </Grid.Column>
-            {props.posts.map((post) => {
-              
-          return (<Grid.Column {...post} key={ post.id } />)
-        })}
-       
-    </Grid.Row>
-  </Grid>
-  </>
-  )
-}
-
-export default ProfilePosts
- */
-
-
 
 function ProfilePosts (props) {
 

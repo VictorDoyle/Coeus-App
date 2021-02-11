@@ -12,7 +12,7 @@ class UserModel {
     }).then(res => res.json())
   }
 
-  // accessed user via ID
+  // accessed current user via Id+login
   static show = (id) => {
     return fetch(`${userBaseUrl}/verify`, {
         method: "GET",
@@ -24,7 +24,7 @@ class UserModel {
   }
 
 
-  // 
+  // show specific user
   static showUser = (id) => {
     return fetch(`${userBaseUrl}/${id}`, {
         method: "GET",
@@ -46,6 +46,25 @@ class UserModel {
       body: JSON.stringify(data)
     }).then(res => res.json())
   } 
+
+  // update-Edit user
+
+static update = (data) => {
+  return fetch(`${url}/users/edit`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${localStorage.uid}`
+    },
+    body: JSON.stringify(data)
+  }).then(res => res.json())
+} 
+
+
+
+
+
+
   // delete route for user
   static delete = (id) => {
     return fetch(`${url}/users/${id}`).then(res => res.json())

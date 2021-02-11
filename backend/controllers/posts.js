@@ -18,7 +18,11 @@ router.get("/", async function (request,response){
         },
         include: {
             author: true,
-            comments: true,
+            comments: {
+                include: {
+                    author: true,
+                }
+            },
             likes: true,
         },
     });

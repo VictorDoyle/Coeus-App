@@ -24,7 +24,7 @@ export default (
         <Route path='/posts/:id' component= { Homepage } />
         <Route path='/news' component= { News } />
         <Route path='/profile/:id' component= { Profile } />
-        <Route path='/settings' component= { Settings } />
+        <Route path='/settings/:id' component= { Settings } />
     </Switch>
 )
 

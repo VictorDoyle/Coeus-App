@@ -10,30 +10,6 @@ const LoaderCircular = () => (
 
       <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
     </Segment>
-
-    <Segment>
-      <Dimmer active inverted>
-        <Loader size='small'>Loading</Loader>
-      </Dimmer>
-
-      <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-    </Segment>
-
-    <Segment>
-      <Dimmer active inverted>
-        <Loader size='medium'>Loading</Loader>
-      </Dimmer>
-
-      <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
-    </Segment>
-
-    <Segment>
-      <Dimmer active inverted>
-        <Loader size='large'>Loading</Loader>
-      </Dimmer>
-
-      <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
-    </Segment>
   </div>
 )
 
