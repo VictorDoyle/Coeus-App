@@ -1,50 +1,40 @@
-import _ from 'lodash'
-import React, { Component } from 'react'
-import { Button, Card, Divider, Image, Placeholder } from 'semantic-ui-react'
-import CommentBox from '../Comments/Comments'
+import React from 'react'
+import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
 
+const LoaderCircular = () => (
+  <div>
+    <Segment>
+      <Dimmer active inverted>
+        <Loader size='mini'>Loading</Loader>
+      </Dimmer>
 
-export default class Loader extends Component {
-  state = { loading: true }
+      <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
+    </Segment>
 
-  handleLoadingClick = () => {
-    this.setState({ loading: true })
+    <Segment>
+      <Dimmer active inverted>
+        <Loader size='small'>Loading</Loader>
+      </Dimmer>
 
-    setTimeout(() => {
-      this.setState({ loading: false })
-    }, 3000)
-  }
+      <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
+    </Segment>
 
-  render() {
-    const { loading } = this.state
+    <Segment>
+      <Dimmer active inverted>
+        <Loader size='medium'>Loading</Loader>
+      </Dimmer>
 
-    return (
-      <>
-        <Button loading={loading} onClick={this.handleLoadingClick} primary>
-          Simulate loading
-        </Button>
-        <Divider />
+      <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+    </Segment>
 
-        <Card className="userPostCard" centered>
-      <Placeholder.Card.Content>
-      <Placeholder.Card.Header></Placeholder.Card.Header>
-      </Placeholder.Card.Content>
-        <Placeholder.Image wrapped ui={false}/> 
-      <Placeholder.Card.Content>
-        <Placeholder.Card.Header></Placeholder.Card.Header>
-        <Placeholder.ard.Meta>
-          
-        </Placeholder.ard.Meta>
-        <Placeholder.Card.Description>
-        
-        </Placeholder.Card.Description>
-      </Placeholder.Card.Content>
-      <Placeholder.Card.Content extra>
-    
-      </Placeholder.Card.Content>
-      <CommentBox/>
-    </Card>
-      </>
-    )
-  }
-}
+    <Segment>
+      <Dimmer active inverted>
+        <Loader size='large'>Loading</Loader>
+      </Dimmer>
+
+      <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+    </Segment>
+  </div>
+)
+
+export default LoaderCircular

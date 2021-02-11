@@ -6,6 +6,8 @@ import cors from "cors";
 /* ROUTES */
 import postRoutes from "./controllers/posts.js"
 import userRoutes from "./controllers/users.js"
+import commentRoutes from './controllers/comments.js'
+import likeRoutes from './controllers/likes.js'
 import { register, login, logout } from "./controllers/auth.js"
 import authRequired from './middleware/authRequired.js'
 
@@ -25,6 +27,8 @@ app.use(cors())
 /* API Routes  */
 app.use('/api/v1/posts', authRequired, postRoutes);
 app.use('/api/v1/users', authRequired, userRoutes);
+app.use('/api/v1/comments', authRequired, commentRoutes);
+app.use('/api/v1/likes', authRequired, likeRoutes);
 app.use('/api/v1/register', register);
 app.use('/api/v1/login', login);
 app.use('/api/v1/logout', logout);

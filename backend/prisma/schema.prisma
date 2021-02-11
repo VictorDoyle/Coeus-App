@@ -19,6 +19,7 @@ model User {
   firstname String
   lastname String
   username String @unique
+  bio String
   email   String  @unique
   password String 
   profile Profile?

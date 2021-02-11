@@ -15,14 +15,15 @@ import PostModal from '../components/UserProfile/Posts/PostModal'
 /* User info */
 import { userState } from "../recoil/atoms"
 
-function Home () {
+function Home (props) {
   const [user, setCurrentUser] = useState([])
   const [users, setUsers] = useState([])
   const [posts, setPosts] = useState([])
+  const [likes, setLike] = useState("");
 
   useEffect(function () {
     fetchData();
-  }, [])
+  }, [props.match.params.id ])
 
   const fetchData = () => {
     PostModel.all().then(data => {

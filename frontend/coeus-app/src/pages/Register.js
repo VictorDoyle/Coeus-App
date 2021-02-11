@@ -5,12 +5,14 @@ function Register(props) {
   const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
   const [username, setUsername] = useState("");
+  const [bio, setBio] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+
   function handleSubmit(event) {
     event.preventDefault();
-    AuthModel.register({ firstname, lastname, username, email, password }).then(json => {
+    AuthModel.register({ firstname, lastname, username, bio, email, password }).then(json => {
       if (json.status === 201) {
         props.history.push("/login");
       } else {
@@ -48,6 +50,15 @@ function Register(props) {
             name='username'
             onChange={(e) => setUsername(e.target.value)}
             value={username}
+          />
+        </div>
+        <div className='form-input'>
+          <label htmlFor='bio'>Your Bio</label>
+          <input
+            type='text'
+            name='bio'
+            onChange={(e) => setBio(e.target.value)}
+            value={bio}
           />
         </div>
         <div className='form-input'>

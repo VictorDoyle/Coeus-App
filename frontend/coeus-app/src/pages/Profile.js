@@ -4,8 +4,6 @@ import Header from '../components/UserProfile/Header/Header'
 import ProfilePosts from '../components/UserProfile/Posts/Posts';
 import PostModel from '../models/post'
 import UserModel from '../models/user'
-/* user */
-
 
 function Profile (props) {
   const [ user, setUser ] = useState([])
@@ -21,7 +19,6 @@ function Profile (props) {
       setPosts( data.posts )
     })
 
-    /* show your own profile */
     UserModel.showUser(props.match.params.id).then(data => {
       setUser( data.user )
     })
@@ -29,12 +26,7 @@ function Profile (props) {
 
   return (
     <>
-  {/* if current user looking at their own profile render -> */}
-
-  {/* { <> {user} ?  <Header user={user} />
-    <ProfilePosts posts={posts} user={user} />  :  <Header otherUser={otherUser} />
-    <ProfilePosts posts={posts} user={otherUser} /> </> } */}
-
+ 
 
 
     <Header user={user} />

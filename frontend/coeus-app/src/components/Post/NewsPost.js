@@ -11,15 +11,32 @@ const props = (
   </a>
 )
 
-const NewsPost = () => (
-  <Card className="newsPostCard"
-  centered
-    image={emptyAvatarExample}
-    header='News Post'
-    meta='BBC News'
-    description="Here is some placeholder text to show you that you're looking at a news post!"
-    extra={props}
-  />
-)
+function NewsPost() {
+  return (
+    <Card className="newsPostCard" centered>
+      <Card.Content>
+      <Card.Header> News Source Here</Card.Header>
+      </Card.Content>
+
+      <Card.Content>
+        <Card.Header> Title Here</Card.Header>
+        <Card.Meta>
+          {/* refactor for styling */}
+          <span className='date'> Created At Here</span>
+        </Card.Meta>
+        <Card.Description>
+          Description Here
+        </Card.Description>
+      </Card.Content>
+      <Card.Content extra>
+        <a>
+          <Icon name='newspaper' />
+          Read Full Article
+        </a>
+      </Card.Content>
+    </Card>
+  )
+}
+
 
 export default NewsPost
