@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useReducer } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, Icon, Image, Button, Label } from 'semantic-ui-react'
 import emptyAvatarExample from '../../testing/placeholders/emptyAvatarExample.png'
 import './UserPost.css'
@@ -68,9 +69,12 @@ function UserPost (props) {
 
   return(
     <Card className="userPostCard" centered>
+      <Link to={`/profile/${props.authorId}`}>
       <Card.Content>
       <Card.Header>{props.author.username}  </Card.Header>
       </Card.Content>
+      </Link>
+      
       <Image src={emptyAvatarExample} wrapped ui={false} />
       <Card.Content>
         <Card.Header>{props.title}</Card.Header>
@@ -92,12 +96,8 @@ function UserPost (props) {
      {/*  if state = liked do UNLIKE POST else if state = not liked do LIKE POST */}
 
       </Card.Content>
-
-      <Card.Content>
-      <Icon name='comment' color={"blue"}/> {props.comments.length} Comments
-      </Card.Content>
-      <CommentBox {...props}/>
-      {/* <CommentShow {...props} /> */}
+      {/* <CommentBox {...props}/> */}
+      <CommentShow {...props} />
     </Card>
   )
 }

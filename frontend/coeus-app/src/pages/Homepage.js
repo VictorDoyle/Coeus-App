@@ -16,6 +16,7 @@ import { userState } from "../recoil/atoms"
 /* Loader for homepage */
 import HomePostLoader from '../components/Loader/HomePostLoader';
 /* CSS */
+import "../styles/Home.css"
 
 
 
@@ -63,7 +64,7 @@ function Home (props) {
   }) */
 
   let postsList = posts.map((post, index) => {
-    return  <Link className="homePostLinks" to={`/profile/${post.authorId}`}><UserPost {...post} key={ post.id } /> </Link>
+    return  <UserPost {...post} key={ post.id } />
   })
 
   

@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Button, Comment, Form } from 'semantic-ui-react'
+import { Button, Comment, Form, Icon } from 'semantic-ui-react'
 import CommentModel from '../../models/comment'
 
 function CommentBox (props) {
@@ -29,12 +29,11 @@ function CommentBox (props) {
 
   return(
     <Comment.Group>
-     {props.comments.map((comment, index) => {
-    /* return  <Comment {...comment} key={ comment.id } />  */
+    {/*  {props.comments.map((comment, index) => {
     return  <Comment {...comment} key={ comment.id } />
-
-  })}
+  })} */}
     <Comment>
+    <Icon name='comment' color={"blue"}/> {props.comments.length} Comments
 
       <Comment.Avatar as='a' src='https://react.semantic-ui.com/images/avatar/small/joe.jpg' />
       <Comment.Content>

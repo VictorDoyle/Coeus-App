@@ -1,10 +1,30 @@
-import React, {useState} from 'react'
-import { Button, Comment, Form } from 'semantic-ui-react'
+import React, {useState, useReducer} from 'react'
+import { Button, Comment, Form , Icon} from 'semantic-ui-react'
 import CommentModel from '../../models/comment'
+
+function showUnshowComments(state, action) {
+    switch (action.type) {
+      case 'SHOW_COMMENTS':
+        return {  ...state, collapsed: false }
+      case 'UNSHOW_COMMENTS':
+        return { ...state, collapsed: true }
+      default:
+        throw new Error()
+    }
+  }
+
+  const initialState = {
+    collapsed: false
+  };
 
 function CommentShow(props) {
   const [content, setComment] = useState("");
   const [postId, setpostId ] = useState("");
+  /* show comments on/off */
+  const [state, dispatch] = useReducer(showUnshowComments, initialState);
+  const { collapsed } = state
+
+
 
   console.log("this post is", props.id)
   
@@ -20,22 +40,28 @@ function CommentShow(props) {
 
 
   /* mapping out comments */
-  let commentsList = props.comments.map((comment, index) => {
+/*   let commentsList = props.comments.map((comment, index) => {
     return  <Comment {...comment} key={ comment.id } /> 
 
-  })
+  }) */
 
 
 
   return(
-    <Comment.Group>
+      <>
+           {collapsed ? <a  onClick={() => dispatch({ type: 'SHOW_COMMENTS' })}> <Icon name='comment' color={"blue"}/> Show {props.comments.length} Comments</a> 
+      : <a  onClick={() => dispatch({ type: 'UNSHOW_COMMENTS' })}> <Icon name='comment' color={"blue"}/> {props.comments.length} Comments </a>}
+     
+      <Comment.Group collapsed={collapsed}>
+
+      
+        {/* <Icon name='comment' color={"blue"}/> {props.comments.length} Comments */}
      {props.comments.map((comment, index) => {
     /* return  <Comment {...comment} key={ comment.id } />  */
-    return  <> <Comment {...comment} key={ comment.id }>
-        
-        
+    return  <> 
+    <Comment {...comment} key={ comment.id }>
         <Comment.Content>
-        <Comment.Author> {comment.authorId}</Comment.Author>
+        <Comment.Author> {props.author.username}</Comment.Author>
         <Comment.Metadata>
           <div>{comment.createdAt}</div>
         </Comment.Metadata>
@@ -44,41 +70,16 @@ function CommentShow(props) {
           {comment.content}
           </p>
         </Comment.Text>
-        <Comment.Actions>
-          <Comment.Action>Reply</Comment.Action>
-        </Comment.Actions>
       </Comment.Content>
     </Comment>
+   
     
     </>
+   
 
   })}
-    {/* <Comment>
-
-      <Comment.Avatar as='a' src='https://react.semantic-ui.com/images/avatar/small/joe.jpg' />
-      <Comment.Content>
-        <Comment.Author></Comment.Author>
-        <Comment.Metadata>
-          <div></div>
-        </Comment.Metadata>
-        <Comment.Text>
-          <p>
-         
-          </p>
-        </Comment.Text>
-        <Comment.Actions>
-          <Comment.Action>Reply</Comment.Action>
-        </Comment.Actions>
-      </Comment.Content>
-    </Comment>
-
-    <Form reply>
-      <Form.TextArea value={ content }  onChange={(e) => setComment(e.target.value)}  />
-      <Button content='Add Comment' labelPosition='left' icon='edit' primary onClick={handleCommentSubmit}/>
-    </Form>
-*/}
   </Comment.Group>
-
+  </>
   )
 }
 
