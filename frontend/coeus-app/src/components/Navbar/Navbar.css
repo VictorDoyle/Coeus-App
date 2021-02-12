@@ -3,3 +3,11 @@
     z-index: 20;
     width: 100%;
 }
+
+.NavBar .icon {
+    color: #dbeeef
+}
+
+.NavBarColor{
+    background: linear-gradient(90deg, rgba(139,90,240,1) 0%, rgba(131,96,241,1) 25%, rgba(84,73,219,1) 75%, rgba(50,71,153,1) 100%) !important; 
+}

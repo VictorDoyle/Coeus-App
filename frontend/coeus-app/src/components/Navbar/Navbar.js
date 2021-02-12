@@ -37,7 +37,7 @@ function Navbar () {
  
     return (
       <div className="NavBar">
-      <Menu icon='labeled'>
+      <Menu icon='labeled' className="NavBarColor">
      
         {/* logo + search bar */}
         <Menu.Menu position='left'> 
@@ -48,7 +48,7 @@ function Navbar () {
           onClick={handleItemClick}
         >
           <Icon name='graduation cap' />
-          Logo
+          The Coeus App
         </Menu.Item>
         </Link>
 

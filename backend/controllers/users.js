@@ -91,15 +91,38 @@ router.post("/", async function (request, response){
 
 
 /* DELETE ROUTE */
+/* FIXME: need to add:
 
-router.delete("/:id", async function (request, response) {
+const deleteUserPosts = await.db.post.deleteMany({
+  where: {
+    authorId: deletedUser.id,
+  },
+})
+
+*/
+router.delete("/delete/:id", async function (request, response) {
+    const deleteUserLikes = await db.like.deleteMany({
+        where: {
+          authorId: Number(request.currentUser),
+        },
+      });
+    const deleteUserComments = await db.comment.deleteMany({
+        where: {
+          authorId: Number(request.currentUser),
+        },
+      });
+    const deleteUserPosts = await db.post.deleteMany({
+        where: {
+          authorId: Number(request.currentUser),
+        },
+      });
     const deletedUser = await db.user.delete({
         where: {
-            id: Number(request.params.id),
+            id: Number(request.currentUser),
         }
     });
       // message return on create for testing
-      response.json({message: "the user has been deleted", user: deletedUser })
+      response.json({message: "the user and their posts have been deleted", user: deletedUser, posts: deleteUserPosts, comments: deleteUserComments, likes: deleteUserLikes })
 });
 
 export default router

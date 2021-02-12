@@ -64,14 +64,14 @@ router.get("/profile/:authorId", async function (request,response){
 
 /* SHOW POST ROUTE */
 
-router.get("/:id", async function (request,response){
+/* router.get("/:id", async function (request,response){
     const post = await db.post.findUnique({
         where: {
             id: Number(request.params.id),
         },
     });
     response.json({ post });
-})
+}) */
 
 /* CREATE ROUTE */
 

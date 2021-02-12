@@ -15,14 +15,8 @@ function UserSettings (props) {
    /*  const [delete, setDelete] = useState([])
  */
   function handleProfileEdit(event) {
-
-   /*  useEffect(function () {
-        fetchData();
-      }, [props.match.params.id ])
-     */
-
     event.preventDefault();
-    UserModel.update({ username, bio, email }).then(json => {
+      UserModel.update({ username, bio, email }).then(json => {
       if (json.status === 201) {
         props.history.push("/profile");
         setUser(json.user)
@@ -32,6 +26,14 @@ function UserSettings (props) {
       }
     });
   }
+
+  function deleteUser(event) {
+      event.preventDefault();
+      UserModel.delete(user.id).then(json => {
+          console.log(json, "user was deleted ")
+      })
+  }
+    
 
     return (
         <>
@@ -75,7 +77,7 @@ function UserSettings (props) {
         <Header.Subheader>
         The button below will delete the entirety of your account.
         </Header.Subheader>
-        <Button color="red"> Delete My Account </Button>
+        <Button color="red" onClick={deleteUser}> Delete My Account </Button>
     </Header>
     </Container>
 

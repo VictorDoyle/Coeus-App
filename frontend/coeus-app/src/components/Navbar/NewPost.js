@@ -86,7 +86,7 @@ function AddNewPost(props) {
       </Form>
         </Modal.Content>
         <Modal.Actions>
-        <Button type='submit' value="submit" onClick={() => dispatch({ type: 'CLOSE_MODAL' })}>
+        <Button type='submit' value="submit" onClick={() => dispatch({ type: 'CLOSE_MODAL'}), handleSubmit}>
         Post
       </Button>
         </Modal.Actions>

@@ -22,18 +22,13 @@ model User {
   bio String
   email   String  @unique
   password String 
-  profile Profile?
+  
 
   //all posts user has made - One To Many
   posts Post[]
 }
 
-model Profile {
-  id     Int     @default(autoincrement()) @id
-  bio    String?
-  user   User    @relation(fields: [userId], references: [id])
-  userId Int     @unique
-}
+
 
 // Generating the Post Model
 

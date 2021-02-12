@@ -61,13 +61,15 @@ static update = (data) => {
 } 
 
 
-
-
-
-
   // delete route for user
   static delete = (id) => {
-    return fetch(`${url}/users/${id}`).then(res => res.json())
+    console.log("showme user id", id)
+    return fetch(`${userBaseUrl}/delete/${id}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `Bearer ${localStorage.uid}`
+      }
+    }).then(res => res.json())
   }
 }
 

@@ -7,7 +7,7 @@ import { useEffect } from "react"
 import AuthModel from "./models/auth"
 import { userState } from "./recoil/atoms"
 import { useSetRecoilState } from "recoil"
-
+import "./styles/App.css"
 function App() {
   const setUser = useSetRecoilState(userState)
   useEffect(function (){
