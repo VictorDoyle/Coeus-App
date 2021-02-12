@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-
 import AuthModel from "../models/auth";
+import { Form, Button, Card } from 'semantic-ui-react'
+import { Link } from 'react-router-dom';
+import "../styles/Login.css";
+
 
 import { userState } from "../recoil/atoms";
 import { useSetRecoilState } from "recoil";
@@ -28,30 +31,29 @@ function Login(props) {
   }
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div className='form-input'>
-          <label htmlFor='email'>Email</label>
-          <input
-            type='text'
-            name='email'
-            onChange={e => setEmail(e.target.value)}
-            value={email}
-          />
-        </div>
-        <div className='form-input'>
-          <label htmlFor='password'>Password</label>
-          <input
-            type='password'
-            name='password'
-            onChange={e => setPassword(e.target.value)}
-            value={password}
-          />
-        </div>
+    <div className="loginAll">
 
-        <input type='submit' value='Login' />
-      </form>
+      <Card centered className="loginCard">
+        <Card.Header as="h1"> Login </Card.Header>
+  <Form onSubmit={handleSubmit}>
+    <Form.Field>
+      <input type ="text"  placeholder='Your Email' value={ email }  onChange={(e) => setEmail(e.target.value)}/>
+      </Form.Field>
+      <Form.Field>
+      <input type ="text"  placeholder='Your Password' value={ password }  onChange={(e) => setPassword(e.target.value)}/>
+      </Form.Field>
+
+      <Button type='submit' value='Login' color="blue">
+        Login
+      </Button>
+      <Link to="/">
+      <Button  color="grey">
+        Return
+      </Button>
+      </Link>
+
+  </Form>
+  </Card>
     </div>
   );
 }

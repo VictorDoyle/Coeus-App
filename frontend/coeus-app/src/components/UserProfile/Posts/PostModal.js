@@ -58,11 +58,11 @@ function PostModal(props) {
     </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        <Button color='black' onClick={handleLike}>
-          Like
+        <Button color='red' onClick={handleLike}>
+          <Icon name="heart"></Icon>Like
         </Button>
         <Button
-          content="Comment"
+          content="Return"
           labelPosition='right'
           icon='checkmark'
           onClick={() => setOpen(false)}

@@ -9,7 +9,7 @@ import Profile from '../pages/Profile'
 import Register from '../pages/Register'
 import Login from '../pages/Login'
 import Settings from '../pages/Settings'
-
+import NotFound from '../pages/NotFound'
 
 export default (
     <Switch>
@@ -20,11 +20,12 @@ export default (
         {/* APP ROUTES */}
         <Route path='/home' component={ Homepage } />
         <Route path='/posts' component={ Homepage } />
-        {/* TODO: add component for "postShow"  */}
         {/* <Route path='/posts/:id' component= { Homepage } /> */}
         <Route path='/news' component= { News } />
         <Route path='/profile/:id' component= { Profile } />
         <Route path='/settings/:id' component= { Settings } />
+        {/* 404 ROUTE */}
+        <Route component={NotFound} />
     </Switch>
 )
 

@@ -1,5 +1,6 @@
 import React from 'react';
-import Loader from '../components/Loader/Loader'
+import { Header, Icon, Button, Card, Segment, Form,Grid, Input, Divider } from 'semantic-ui-react'
+
 import SignupForm from '../components/SignupForm/SignupForm'
 import LandingPageForm from '../components/SignupForm/LandingPageForm'
 import { Link } from 'react-router-dom';
@@ -9,42 +10,89 @@ import '../styles/LandingPage.css'
 import CountUp from 'react-countup';
 
 
-
 const LandingPage = () => {
   return (
+  <>
   <div className="landingPageAll"> 
-          <div className="ui text container landingPageText">
-              <h1 className="ui header"> A Reimagined Social Network </h1>
-              <h2 className="ui header">No more Infinite Scrolling without benefit and no more losing productivity! </h2>
-              <h3> With The Social Network Coeus, you'll spend time communicating with your friends, all the while learning new things every day
-              </h3>
+  <div className="landingHeaderIntro"> 
+      <Header as='h2' icon>
+          <Icon name='graduation cap' />
+          A Reimagined Social Network 
+          <Header.Subheader>
+          No more Infinite Scrolling without benefit and no more losing productivity!
+          </Header.Subheader>
+      </Header>
+      </div>
 
-              <h2 className="ui header"> Did You Know: </h2>
-              <div>
-                <div className="ui statistics">
-                    <div className="ui statistic">
-                      <div className="label">Users Spend <br></br> An Average of</div>
-                      <div className="value"><CountUp duration={4} end={14} /></div>
-                      <div className="label">Hours A Week <br></br> On Social Media</div>
-                    </div>
-                    <div className="ui statistic">
-                      <div className="label"><br></br>In Total</div>
-                      <div className="value"><CountUp duration={4} end={35} />%</div>
-                      <div className="label">Of Users Get Their News <br></br> From Social Media</div>
-                    </div>
-                    <div className="ui statistic">
-                      <div className="value"><CountUp duration={4} end={57} />%</div>
-                      <div className="label">Of Millenials in 2020 <br></br> Use Social Media <br></br> As A News Source</div>
-                    </div>
-                </div>
-                <h2> Ready to join?</h2>
-                <Link to='/register'> JOIN !</Link>
-              </div>
+      
+      
 
-          </div>
+<Card.Group centered className="landingPageCards">
+  {/* card 1 */}
+    <Card>
+      <Card.Content>
+        <Card.Header> Users Spend An Average of </Card.Header>
+        <Card.Description as='h2'centered>
+        <div> <CountUp duration={4} end={14} /> Hours </div>
+        </Card.Description>
+        <Card.Description as='h4'centered>
+        A Week On Social Media
+        </Card.Description>
+      </Card.Content>
+    </Card>
+  {/* card 2 */}
+  <Card>
+      <Card.Content>
+        <Card.Header> A total of  </Card.Header>
+        <Card.Description as='h2'centered>
+        <div> <CountUp duration={4} end={35} /> % </div>
+        </Card.Description>
+        <Card.Description as='h4'centered>
+        Of Users Get Their News From Social Media
+        </Card.Description>
+      </Card.Content>
+    </Card>
+    {/* card 3 */}
+    <Card>
+      <Card.Content>
+        <Card.Header> A total of  </Card.Header>
+        <Card.Description as='h2'centered>
+        <div> <CountUp duration={4} end={57} /> % </div>
+        </Card.Description>
+        <Card.Description as='h4'centered>
+        Of Millenials Look At <br/> Social Media As A News Source 
+        </Card.Description>
+      </Card.Content>
+    </Card>
+  </Card.Group>
 
-    </div>
-   
+  {/* LOGIN OR REGISTER SECTION */}
+
+
+
+
+  <Segment basic textAlign='center'>
+  <Link to={"/register"}>
+  <Button
+      color='green'
+      content='Register'
+      icon='add'
+      labelPosition='left'
+    />
+    </Link>
+
+    <Divider horizontal>Or</Divider>
+    <Link to={"/login"}>
+    <Button
+      color='blue'
+      content='Login'
+      icon='add'
+      labelPosition='left'
+    />
+    </Link>
+  </Segment>
+  </div>
+  </>
   );
 }
 

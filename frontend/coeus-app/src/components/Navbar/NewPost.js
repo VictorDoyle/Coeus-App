@@ -45,6 +45,12 @@ function AddNewPost(props) {
     });
   }
 
+  function closeNPost() {
+    dispatch({ type: 'CLOSE_MODAL' });
+    handleSubmit();
+  }
+  
+
   return (
     <div>
         <Icon onClick={() => dispatch({ type: 'OPEN_MODAL' })}>
@@ -79,16 +85,15 @@ function AddNewPost(props) {
         <Form.Checkbox label="Publish Now? (If unchecked, we'll save your post for later posting)" value= { published}  onChange={(e) => setPublished(!published)} />
 
       <EmojiBox />
-       
-      {/* <Button type='submit' value="submit" onClick={() => dispatch({ type: 'CLOSE_MODAL' })}>
-        Post
-      </Button> */}
       </Form>
         </Modal.Content>
         <Modal.Actions>
-        <Button type='submit' value="submit" onClick={() => dispatch({ type: 'CLOSE_MODAL'}), handleSubmit}>
+        
+        <Button type='submit' value="submit" onClick={(event) => {dispatch({ type: 'CLOSE_MODAL'}); handleSubmit(event)}}>
+
         Post
       </Button>
+
         </Modal.Actions>
       </Modal>
     </div>

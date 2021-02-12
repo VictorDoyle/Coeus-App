@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import AuthModel from "../models/auth";
+import { Form, Button, Card } from 'semantic-ui-react'
+import "../styles/Register.css";
+import { Link } from 'react-router-dom';
+
 
 function Register(props) {
   const [firstname, setFirstName] = useState("");
@@ -22,66 +26,50 @@ function Register(props) {
   }
 
   return (
-    <div>
-      <h2>Register for an Account!</h2>
-      <form onSubmit={handleSubmit}>
-      <div className='form-input'>
-          <label htmlFor='firstname'>First Name</label>
-          <input
-            type='text'
-            name='firstname'
-            onChange={(e) => setFirstName(e.target.value)}
-            value={firstname}
-          />
-        </div>
-        <div className='form-input'>
-          <label htmlFor='lastname'>Last Name</label>
-          <input
-            type='text'
-            name='lastname'
-            onChange={(e) => setLastName(e.target.value)}
-            value={lastname}
-          />
-        </div>
-        <div className='form-input'>
-          <label htmlFor='username'>Username</label>
-          <input
-            type='text'
-            name='username'
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
-          />
-        </div>
-        <div className='form-input'>
-          <label htmlFor='bio'>Your Bio</label>
-          <input
-            type='text'
-            name='bio'
-            onChange={(e) => setBio(e.target.value)}
-            value={bio}
-          />
-        </div>
-        <div className='form-input'>
-          <label htmlFor='email'>Email</label>
-          <input
-            type='text'
-            name='email'
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-          />
-        </div>
-        <div className='form-input'>
-          <label htmlFor='password'>Password</label>
-          <input
-            type='password'
-            name='password'
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-          />
-        </div>
+    <div className="registerAll">
 
-        <input type='submit' value='Register' />
-      </form>
+    <Card centered className="registerCard">
+            <Card.Header as="h1"> Register For An Account </Card.Header>
+      <Form onSubmit={handleSubmit}>
+        <Form.Field>
+          <input type ="text" name='firstname' placeholder='First Name' value={ firstname }  onChange={(e) => setFirstName(e.target.value)}/>
+          </Form.Field>
+          <Form.Field>
+          <input type='text' placeholder='Last Name' name='lastname' value={lastname} onChange={(e) => setLastName(e.target.value)} />
+          </Form.Field>
+          <Form.Field>
+          <input type ="password" name='password' placeholder='Your Password' value={ password }  onChange={(e) => setPassword(e.target.value)}/>
+          </Form.Field>
+
+          <Form.Field> 
+          <input type='text' placeholder='Username' name='username'  value={username} onChange={(e) => setUsername(e.target.value)} />
+          </Form.Field>
+
+          <Form.Field> 
+          <input type='text' placeholder='Your Profile Bio' name='bio' value={bio} onChange={(e) => setBio(e.target.value)}/>
+          </Form.Field> 
+
+          <Form.Field> 
+          <input type='text' placeholder='Email Address' name='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
+          </Form.Field> 
+
+    
+
+
+          <Button type='submit' value='Register' color="blue">
+            Register
+          </Button>
+          <Link to="/">
+          <Button  color="grey">
+            Return
+          </Button>
+          </Link>
+
+      </Form>
+      </Card>
+
+    
+
     </div>
   );
 }

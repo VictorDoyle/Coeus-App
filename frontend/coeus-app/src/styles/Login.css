@@ -1,7 +1,6 @@
 /* animation for overall background of Landing Page  */
 
-
-.landingPageAll {
+.loginAll {
     background: linear-gradient(89deg, #243466, #4a5c94, #6b7db6, #6b9bb6, #37afca, #37cab1, #37ca91, #43bf5e, #a1bf43, #bfb143, #d79b37, #d77137);
     background-size: 2400% 2400%;
     height: 100vh;
@@ -22,12 +21,8 @@
     100%{background-position:0% 50%}
 }
 
-.landingHeaderIntro {
-    padding-top: 5%;
-    padding-left:40%;
-    padding-right: 40%;
-}
 
-.landingPageCards {
-    padding-bottom: 15%;
-}
+
+.loginCard {
+    top: 280px !important;
+} 
