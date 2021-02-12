@@ -4,8 +4,38 @@
     width: 100%;
 }
 
-.NavBar .icon {
-    color:azure
+p {
+    color: azure;
+    font-weight:bold;
+}
+.homeIcon {
+    color:azure;
+    font-weight: 600;
+}
+
+.postIcon {
+    color:orange;
+}
+
+.newsIcon {
+    color: lightskyblue;
+}
+
+.logoIcon {
+    color:snow;
+}
+
+.userIcon {
+    color: plum;
+}
+
+.newPostIcon {
+    color:slateblue ;
+    margin-left: 1px;
+}
+
+.settingIcon {
+    color: whitesmoke;
 }
 
 .NavBarColor{

@@ -47,8 +47,8 @@ function Navbar () {
           active={activeItem === 'graduation cap'}
           onClick={handleItemClick}
         >
-          <Icon name='graduation cap' />
-          The Coeus App
+          <Icon name='graduation cap' className="logoIcon"/>
+         <p> The Coeus App </p>
         </Menu.Item>
         </Link>
 
@@ -65,8 +65,8 @@ function Navbar () {
           active={activeItem === 'home'}
           onClick={handleItemClick}
         >
-          <Icon name='home' />
-          Home
+          <Icon name='home'className="homeIcon"/>
+          <p> Home </p>
         </Menu.Item>
         </Link>
 
@@ -76,8 +76,8 @@ function Navbar () {
           active={activeItem === 'write square'}
           onClick={handleItemClick}
         >
-          <Icon name='write square' />
-          Posts
+          <Icon name='write square' className="postIcon"/>
+          <p> Posts </p>
         </Menu.Item>
         </Link>
 
@@ -87,8 +87,8 @@ function Navbar () {
           active={activeItem === 'newspaper outline'}
           onClick={handleItemClick}
         >
-          <Icon name='newspaper outline' />
-          News
+          <Icon name='newspaper outline' className="newsIcon" />
+          <p> News </p>
         </Menu.Item>
         </Link>
         </Menu.Menu>
@@ -102,8 +102,8 @@ function Navbar () {
           active={activeItem === 'user'}
           onClick={handleItemClick}
         >
-          <Icon name='user' />
-          {user && user.username }
+          <Icon name='user' className="userIcon"/>
+          <p> {user && user.username }</p>
         </Menu.Item>
         </Link>
 
@@ -122,8 +122,8 @@ function Navbar () {
           active={activeItem === 'setting'}
           onClick={handleItemClick}
         >
-          <Icon name='setting' />
-          Settings 
+          <Icon name='setting' className="settingIcon"/>
+         <p> Settings </p> 
         </Menu.Item>
         </Link>
         </Menu.Menu>

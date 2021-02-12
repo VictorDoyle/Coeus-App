@@ -114,7 +114,7 @@ function NewsPost() {
        </Card.Description>
      </Card.Content>
      <Card.Content extra>
-       <a href="{article.url">
+       <a href={article.url}>
          <Icon name='newspaper' />
          Read Full Article
 
