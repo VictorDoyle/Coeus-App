@@ -48,7 +48,7 @@ function Navbar () {
           onClick={handleItemClick}
         >
           <Icon name='graduation cap' className="logoIcon"/>
-         <p> The Coeus App </p>
+         <p className="navText"> The Coeus App </p>
         </Menu.Item>
         </Link>
 
@@ -66,7 +66,7 @@ function Navbar () {
           onClick={handleItemClick}
         >
           <Icon name='home'className="homeIcon"/>
-          <p> Home </p>
+          <p className="navText"> Home </p>
         </Menu.Item>
         </Link>
 
@@ -77,7 +77,7 @@ function Navbar () {
           onClick={handleItemClick}
         >
           <Icon name='write square' className="postIcon"/>
-          <p> Posts </p>
+          <p className="navText"> Posts </p>
         </Menu.Item>
         </Link>
 
@@ -88,7 +88,7 @@ function Navbar () {
           onClick={handleItemClick}
         >
           <Icon name='newspaper outline' className="newsIcon" />
-          <p> News </p>
+          <p className="navText"> News </p>
         </Menu.Item>
         </Link>
         </Menu.Menu>
@@ -103,7 +103,7 @@ function Navbar () {
           onClick={handleItemClick}
         >
           <Icon name='user' className="userIcon"/>
-          <p> {user && user.username }</p>
+          <p className="navText"> {user && user.username }</p>
         </Menu.Item>
         </Link>
 
@@ -123,7 +123,7 @@ function Navbar () {
           onClick={handleItemClick}
         >
           <Icon name='setting' className="settingIcon"/>
-         <p> Settings </p> 
+         <p className="navText"> Settings </p> 
         </Menu.Item>
         </Link>
         </Menu.Menu>

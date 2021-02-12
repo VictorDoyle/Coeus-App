@@ -4,10 +4,10 @@
     width: 100%;
 }
 
-p {
+.navText {
     color: azure;
     font-weight:bold;
-}
+} 
 .homeIcon {
     color:azure;
     font-weight: 600;

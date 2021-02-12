@@ -55,7 +55,7 @@ function AddNewPost(props) {
     <div>
 
         <Icon className="newPostIcon" name='plus square' size='big' onClick={() => dispatch({ type: 'OPEN_MODAL' })} />
-          <p> New </p>
+          <p className="newPostTag"> New </p>
         
     
       <Modal
