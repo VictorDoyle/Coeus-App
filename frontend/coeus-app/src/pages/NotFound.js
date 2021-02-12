@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/LandingPage.css'
+import '../styles/NotFound.css'
 import {  Button, Card } from 'semantic-ui-react'
 
 
