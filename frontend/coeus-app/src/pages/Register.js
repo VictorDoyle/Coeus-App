@@ -29,7 +29,7 @@ function Register(props) {
     <div className="registerAll">
 
     <Card centered className="registerCard">
-            <Card.Header as="h1"> Register For An Account </Card.Header>
+            <Card.Header as="h1" className="headerRegister"> Register For An Account </Card.Header>
       <Form onSubmit={handleSubmit}>
         <Form.Field>
           <input type ="text" name='firstname' placeholder='First Name' value={ firstname }  onChange={(e) => setFirstName(e.target.value)}/>
@@ -56,11 +56,11 @@ function Register(props) {
     
 
 
-          <Button type='submit' value='Register' color="blue">
+          <Button className="registerButton" type='submit' value='Register' color="green">
             Register
           </Button>
           <Link to="/">
-          <Button  color="grey">
+          <Button  className="returnButton" color="grey">
             Return
           </Button>
           </Link>

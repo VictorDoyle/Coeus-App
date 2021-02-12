@@ -34,7 +34,7 @@ function Login(props) {
     <div className="loginAll">
 
       <Card centered className="loginCard">
-        <Card.Header as="h1"> Login </Card.Header>
+        <Card.Header as="h1" className="headerLogin" > Login </Card.Header>
   <Form onSubmit={handleSubmit}>
     <Form.Field>
       <input type ="text"  placeholder='Your Email' value={ email }  onChange={(e) => setEmail(e.target.value)}/>
@@ -43,11 +43,11 @@ function Login(props) {
       <input type ="text"  placeholder='Your Password' value={ password }  onChange={(e) => setPassword(e.target.value)}/>
       </Form.Field>
 
-      <Button type='submit' value='Login' color="blue">
+      <Button className="loginButton" type='submit' value='Login' color="blue">
         Login
       </Button>
       <Link to="/">
-      <Button  color="grey">
+      <Button  className="returnButton" color="grey">
         Return
       </Button>
       </Link>

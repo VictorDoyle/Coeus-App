@@ -26,3 +26,20 @@
 .registerCard {
     top: 200px !important;
 }
+
+.registerButton {
+    margin-left: 30px !important;
+    float:left;
+}
+
+.returnButton {
+    margin-right: 30px !important;
+    margin-bottom: 10px !important;
+    float:right;
+}
+
+.headerRegister {
+    margin-top: 10px !important;
+    margin-left: auto;
+    margin-right:auto;
+}
