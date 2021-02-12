@@ -1,4 +1,3 @@
-/* TODO: Add breakpoint on mobile and transfer to Hamburger Menu */
 
 .rightSideBar {
     position: absolute;
@@ -6,4 +5,15 @@
     top: 132px;
     right: 15px;
     z-index: 30;
+    }
+
+
+.rightSideBar .icon {
+    color: #dbeeef
+}
+
+
+
+.rightSideMenu {
+    background: #e0e8fa !important; 
 }

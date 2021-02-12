@@ -11,7 +11,7 @@ function LeftSideBar (props) {
 
   return(
     <div className="leftSideBar"> 
-        <Menu borderless icon='labeled' vertical>
+        <Menu borderless icon='labeled' vertical className="leftSideMenu">
             <Menu.Item
             /* TODO: refactor for comp mounting of rerender of "your user profile"
             name='user'

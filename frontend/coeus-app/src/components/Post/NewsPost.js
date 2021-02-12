@@ -1,17 +1,34 @@
 import React from 'react'
-import { Card, Icon } from 'semantic-ui-react'
-import emptyAvatarExample from '../../testing/placeholders/emptyAvatarExample.png'
+import { Card, Icon, Button} from 'semantic-ui-react'
+import NewsModel from '../../models/news'
 import './UserPost.css'
 
-/* autopopulate with props.user */
-const props = (
-  <a>
-    <Icon name='heart' />
-    16 Likes
-  </a>
-)
+
 
 function NewsPost() {
+/* fetch most viewed articles for the last seven days from NY TIMES */
+  const fetchWeeklyNews = (event) => {
+    event.preventDefault();
+    NewsModel.getWeeklyNews().then(json => {
+        if (json) {
+         
+          console.log(json)
+        } else {
+          console.log("news was not fetched");
+        }
+    })
+    
+  }
+
+
+
+
+
+
+
+
+
+
   return (
     <Card className="newsPostCard" centered>
       <Card.Content>
@@ -32,6 +49,7 @@ function NewsPost() {
         <a>
           <Icon name='newspaper' />
           Read Full Article
+          <Button onClick={fetchWeeklyNews}></Button>
         </a>
       </Card.Content>
     </Card>

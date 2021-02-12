@@ -7,7 +7,7 @@ import FriendsList from '../../components/FriendsList/FriendsList'
 function RightSideBar(props) {
   return(
     <div className="rightSideBar">
-        <Menu icon='labeled' vertical>
+        <Menu icon='labeled' vertical className="rightSideMenu">
           <Menu.Item>
             <div>
             <Header size='medium'>Your Friends List</Header>

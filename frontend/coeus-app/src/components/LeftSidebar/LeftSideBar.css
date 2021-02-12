@@ -8,3 +8,7 @@
 .ui.vertical.icon.menu {
     width: 420px;
 }
+
+.leftSideMenu {
+    background: #e0e8fa !important; 
+}

@@ -55,7 +55,7 @@ function SearchBar(props) {
 
       dispatch({
         type: 'FINISH_SEARCH',
-        results: _.filter(props.users.username, isMatch),
+        results: _.filter(props.users, isMatch),
       })
     }, 300)
   }, [])
