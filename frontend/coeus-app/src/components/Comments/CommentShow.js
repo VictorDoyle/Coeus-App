@@ -79,6 +79,10 @@ function CommentShow(props) {
 
   })}
   </Comment.Group>
+  <Form reply>
+      <Form.TextArea value={ content }  onChange={(e) => setComment(e.target.value)}  />
+      <Button content='Add Comment' labelPosition='left' icon='edit' primary onClick={handleCommentSubmit}/>
+    </Form>
   </>
   )
 }

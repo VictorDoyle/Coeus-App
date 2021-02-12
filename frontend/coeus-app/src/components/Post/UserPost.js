@@ -8,16 +8,6 @@ import PostModel from '../../models/post'
 import LikeModel from '../../models/like';
 import CommentShow from '../Comments/CommentShow';
 
-/* function likeUnlikeReducer(state, action) {
-  switch (action.type) {
-    case 'LIKE_POST':
-      return {  ...state, liked: true }
-    case 'UNLIKE_POST':
-      return { ...state, liked: false }
-    default:
-      throw new Error()
-  }
-} */
 
 function likeUnlikeReducer(state, action) {
   switch (action.type) {
@@ -69,11 +59,11 @@ function UserPost (props) {
 
   return(
     <Card className="userPostCard" centered>
-      <Link to={`/profile/${props.authorId}`}>
       <Card.Content>
+      <Link to={`/profile/${props.authorId}`}>
       <Card.Header>{props.author.username}  </Card.Header>
-      </Card.Content>
       </Link>
+      </Card.Content>
       
       <Image src={emptyAvatarExample} wrapped ui={false} />
       <Card.Content>
@@ -88,12 +78,15 @@ function UserPost (props) {
         </Card.Description>
       </Card.Content>
       <Card.Content extra>
-      {/* <a  onClick={() => dispatch({ type: 'LIKE_POST' }), handleDislike}> <Icon name='heart' color={"grey"}  /> {props.likes.length} Dislike </a> */}
-
+       <a  onClick={() => dispatch({ type: 'LIKE_POST' }), handleLike}> <Icon name='heart' color={"grey"}  /> {props.likes.length} Likes! </a> 
+      {/* 
       {liked ? <a  onClick={() => dispatch({ type: 'LIKE_POST' }), handleLike}> <Icon name='heart' color={"grey"}  /> {props.likes.length} Likes </a> 
       : <a  onClick={() => dispatch({ type: 'UNLIKE_POST' }), handleDislike}> <Icon name='heart' color={"red"}  />  Unlike </a>}
-
+ */}
      {/*  if state = liked do UNLIKE POST else if state = not liked do LIKE POST */}
+
+{/* if currentUser.id ===/present IN likes=[] show icon red unlike  */}
+
 
       </Card.Content>
       {/* <CommentBox {...props}/> */}

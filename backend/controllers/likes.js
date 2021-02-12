@@ -20,6 +20,8 @@ router.get("/", async function (request,response){
     response.json({ likes });
 });
 
+
+
 /* Create the like */
 
 router.post("/", async function (request,response){
@@ -37,9 +39,11 @@ router.post("/", async function (request,response){
 /* Delete the route */
 
 router.delete("/:id", async function (request, response) {
+    const { authorId } = request.currentUser
+    console.log("from backend", request.params.id)
     const deletedLike = await db.like.delete({
         where: {
-            /* authorId: Number(request.currentUser), */
+            /* authorId: authorId, */
             id: Number(request.params.id),
         }
     });

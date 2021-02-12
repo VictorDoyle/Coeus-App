@@ -56,7 +56,7 @@ model Post {
   // One To Many // Post To Comments
   comments Comment[]
   // One To Many // Post To Likes
-  likes Like[]
+  likes Like[] 
 }
 
 model Comment {

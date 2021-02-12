@@ -1,5 +1,5 @@
 import React , { useEffect, useState } from 'react'
-import { Button, Header, Icon, Modal, Image } from 'semantic-ui-react'
+import { Button, Header, Icon, Modal, Image, Comment } from 'semantic-ui-react'
 import ProfilePosts from './Posts'
 import LikeModel from '../../../models/like'
 
@@ -30,6 +30,32 @@ function PostModal(props) {
           {props.post.description}
           </p>
         </Modal.Description>
+      </Modal.Content>
+      <Modal.Content>
+      <Modal.Description>
+          <Header> Post Comments: </Header>
+          
+     
+        {props.post.comments.map((comment, index) => {
+     return <> 
+     <Comment name="comment" color="blue" {...comment} key={ comment.id } >
+
+     <Comment.Content>
+        <Comment.Author> {/* pass in comment.author.name here */}</Comment.Author>
+        <Comment.Metadata>
+         
+        </Comment.Metadata>
+        <Comment.Text>
+          <p>
+          {comment.content}
+          </p>
+        </Comment.Text>
+      </Comment.Content>
+      
+       </Comment> 
+       </>
+    })}
+    </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
         <Button color='black' onClick={handleLike}>

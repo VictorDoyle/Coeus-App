@@ -27,8 +27,9 @@ class LikeModel {
 
   // accessed delete route of like
   /* FIXME: improper use of delete - need to pass in an ID but no Id on URL to query from since inside of post comp */
-  static delete = (postId) => {
-    return fetch(`${url}/${postId}`, {
+  static delete = (id) => {
+    console.log("from model like", id)
+    return fetch(`${url}/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

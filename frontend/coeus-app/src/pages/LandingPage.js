@@ -12,7 +12,7 @@ import CountUp from 'react-countup';
 
 const LandingPage = () => {
   return (
-    <div className="landingPageAll"> 
+  <div className="landingPageAll"> 
           <div className="ui text container landingPageText">
               <h1 className="ui header"> A Reimagined Social Network </h1>
               <h2 className="ui header">No more Infinite Scrolling without benefit and no more losing productivity! </h2>
@@ -44,6 +44,7 @@ const LandingPage = () => {
           </div>
 
     </div>
+   
   );
 }
 
