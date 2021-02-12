@@ -1,6 +1,8 @@
 import React, {useState, useReducer, useEffect} from 'react'
 import { Button, Comment, Form , Icon} from 'semantic-ui-react'
 import CommentModel from '../../models/comment'
+/* CSS */
+import "./CommentShow.css"
 
 function showUnshowComments(state, action) {
     switch (action.type) {
@@ -50,8 +52,7 @@ function CommentShow(props) {
 
   return(
       <>
-           {collapsed ? <a  onClick={() => dispatch({ type: 'SHOW_COMMENTS' })}> <Icon name='comment' color={"blue"}/> Show {props.comments.length} Comments</a> 
-      : <a  onClick={() => dispatch({ type: 'UNSHOW_COMMENTS' })}> <Icon name='comment' color={"blue"}/> {props.comments.length} Comments </a>}
+           {collapsed ? <div className="commentIcon" > <a  onClick={() => dispatch({ type: 'SHOW_COMMENTS' })}>  <Icon  name='comment' color={"blue"}/> Show {props.comments.length} Comments</a> </div> : <div className="commentIcon" ><a  onClick={() => dispatch({ type: 'UNSHOW_COMMENTS' })}> <Icon  name='comment' color={"blue"}/> {props.comments.length} Comments </a> </div>}
      
       <Comment.Group collapsed={collapsed}>
 
@@ -60,11 +61,11 @@ function CommentShow(props) {
      {props.comments.map((comment, index) => {
     /* return  <Comment {...comment} key={ comment.id } />  */
     return  <> 
-    <Comment {...comment} key={ comment.id }>
+    <Comment className="commentShow" {...comment} key={ comment.id }>
         <Comment.Content>
         <Comment.Author> {props.author.username}</Comment.Author>
         <Comment.Metadata>
-          <div>{comment.createdAt}</div>
+          <div>posted on: {comment.createdAt}</div>
         </Comment.Metadata>
         <Comment.Text>
           <p>
@@ -82,7 +83,7 @@ function CommentShow(props) {
   </Comment.Group>
   <Form reply>
       <Form.TextArea value={ content }  onChange={(e) => setComment(e.target.value)}  />
-      <Button content='Add Comment' labelPosition='left' icon='edit' primary onClick={handleCommentSubmit}/>
+      <Button className="commentButton" content='Add Comment' labelPosition='left' icon='edit' primary onClick={handleCommentSubmit}/>
     </Form>
   </>
   )

@@ -1,0 +1,14 @@
+.commentIcon {
+    top: 710px;
+    padding-left: 15px;
+}
+
+.commentShow {
+    padding-left: 15px !important;
+}
+
+.commentButton {
+    margin-left: 130px !important;
+    width: 300px;
+    margin-bottom: 15px !important;
+}

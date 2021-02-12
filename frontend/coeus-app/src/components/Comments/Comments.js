@@ -40,6 +40,7 @@ function CommentBox (props) {
     return  <Comment {...comment} key={ comment.id } />
   })} */}
     <Comment>
+      <div className="CommentIcon"></div>
     <Icon name='comment' color={"blue"}/> {props.comments.length} Comments
 
       <Comment.Avatar as='a' src='https://react.semantic-ui.com/images/avatar/small/joe.jpg' />
