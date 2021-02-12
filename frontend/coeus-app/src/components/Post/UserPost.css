@@ -1,12 +1,23 @@
 .userPostCard {
     position: relative;
-    top: 60px;
+    top: 45px;
     margin-bottom: 20px !important;
     z-index: 30;
+    width: 580px  !important;
 }
 
 .newsPostCard {
     position: relative;
     top: 60px;
     z-index: 30;
+}
+
+.postTitleLink {
+    color:black;
+    font-size: 20px;
+}
+
+.postAuthorLink {
+    color:black;
+    font-size: 20px;
 }

@@ -1,4 +1,4 @@
-import React, {useState, useReducer} from 'react'
+import React, {useState, useReducer, useEffect} from 'react'
 import { Button, Comment, Form , Icon} from 'semantic-ui-react'
 import CommentModel from '../../models/comment'
 
@@ -23,6 +23,7 @@ function CommentShow(props) {
   /* show comments on/off */
   const [state, dispatch] = useReducer(showUnshowComments, initialState);
   const { collapsed } = state
+
 
 
 

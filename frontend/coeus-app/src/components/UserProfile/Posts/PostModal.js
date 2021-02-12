@@ -9,7 +9,7 @@ function PostModal(props) {
 
   function handleLike(event) {
     event.preventDefault();
-    LikeModel.create(props.post).then(json => {
+    LikeModel.create(props).then(json => {
         console.log(json, "liked!"); 
     });
   }
@@ -64,7 +64,7 @@ function PostModal(props) {
         <Button
           content="Return"
           labelPosition='right'
-          icon='checkmark'
+          icon='long arrow alternate right'
           onClick={() => setOpen(false)}
           positive
         />

@@ -60,14 +60,16 @@ function UserPost (props) {
   return(
     <Card className="userPostCard" centered>
       <Card.Content>
-      <Link to={`/profile/${props.authorId}`}>
+      <Link className="postAuthorLink" to={`/profile/${props.authorId}`}>
       <Card.Header>{props.author.username}  </Card.Header>
       </Link>
       </Card.Content>
-      
+     
       <Image src={emptyAvatarExample} wrapped ui={false} />
       <Card.Content>
+      <Link className="postTitleLink" to={`/profile/${props.authorId}`}>
         <Card.Header>{props.title}</Card.Header>
+        </Link>
         <Card.Meta>
           {/* refactor for styling */}
           <span className='date'>{props.createdAt}</span>

@@ -1,9 +1,11 @@
 /* eslint-disable max-len */
 import React, {useState, useEffect} from 'react'
-import { Container, Header, Icon, Form, Input, Button } from 'semantic-ui-react'
+import { Container, Header, Icon, Form, Input, Button, Segment, Grid } from 'semantic-ui-react'
 import UserModel from '../../../models/user';
 import { useRecoilState } from "recoil"
 import { userState } from "../../../recoil/atoms"
+
+import "./Settings.css"
 
 function UserSettings (props) {
     /* getting user instance from recoilState for handleProfileEdit */
@@ -37,6 +39,9 @@ function UserSettings (props) {
 
     return (
         <>
+        <Segment>
+          <Grid columns={2} relaxed="very">
+          <Grid.Column>
     <Container text textAlign='center'>
     <Header as='h2' icon>
         <Icon name='settings' />
@@ -69,7 +74,8 @@ function UserSettings (props) {
     </Header>
 
     </Container>
-
+    </Grid.Column>
+    <Grid.Column>
     <Container text textAlign='center'>
     <Header as='h2' icon>
     <Icon name='user delete' />
@@ -80,7 +86,9 @@ function UserSettings (props) {
         <Button color="red" onClick={deleteUser}> Delete My Account </Button>
     </Header>
     </Container>
-
+    </Grid.Column>
+    </Grid>
+    </Segment>
 </>
     )
 }
