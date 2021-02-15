@@ -1,0 +1,38 @@
+{
+  "name": "coeus-backend",
+  "version": "1.0.0",
+  "description": "a social media application ",
+  "main": "server.js",
+  "dependencies": {
+    "@prisma/client": "^2.16.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
+    "prisma": "^2.16.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VictorDoyle/Coeus-App.git"
+  },
+  "keywords": [
+    "social",
+    "media",
+    "application",
+    "platform"
+  ],
+  "author": "Victor Doyle",
+  "license": "MIT",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/VictorDoyle/Coeus-App/issues"
+  },
+  "homepage": "https://github.com/VictorDoyle/Coeus-App#readme"
+}

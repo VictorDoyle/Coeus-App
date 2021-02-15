@@ -3,7 +3,9 @@ import bcrypt from "bcryptjs";
 import cors from "cors";
 import prisma from "@prisma/client";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
 
+dotenv.config();
 
 const db = new prisma.PrismaClient({
     log: ["info", "warn"],
@@ -71,7 +73,7 @@ const register = async (request, response) => {
           {
             id: foundUser.id,
           },
-          "secret key",
+          process.env.jwtsecret,
           {
             expiresIn: "1d",
           }
