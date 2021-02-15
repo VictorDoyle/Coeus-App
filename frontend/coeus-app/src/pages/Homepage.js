@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Card } from 'semantic-ui-react'
 /* Components */
 import LeftSideBar from '../components/LeftSidebar/LeftSideBar';
 import Navbar from '../components/Navbar/Navbar'
@@ -9,6 +10,7 @@ import UserPost from '../components/Post/UserPost';
 /* Models */
 import PostModel from '../models/post'
 import UserModel from '../models/user';
+import AdviceModel from '../models/advice';
 import PostModal from '../components/UserProfile/Posts/PostModal'
 /* User info */
 import { useRecoilState } from "recoil";
@@ -17,6 +19,7 @@ import { userState } from "../recoil/atoms"
 import HomePostLoader from '../components/Loader/HomePostLoader';
 /* CSS */
 import "../styles/Home.css"
+import NewsPost from '../components/Post/NewsPost';
 
 
 
@@ -29,6 +32,22 @@ function Home (props) {
   const [users, setUsers] = useState([])
   const [posts, setPosts] = useState([])
   const [likes, setLike] = useState([]);
+  const [ advice, setAdvice ] = useState([])
+
+
+  /* fetch advice for homepage posts */
+   /*  const getDailyAdvice = (event) => {
+      event.preventDefault();
+      AdviceModel.getWeeklyNews().then(json => {
+          if (json) {
+            setAdvice(json)
+            console.log(json)
+          } else {
+            console.log("advice was not fetched");
+          }
+      })
+      
+    } */
 
   useEffect(function () {
     fetchData();
@@ -47,6 +66,14 @@ function Home (props) {
       console.log(data)
       setCurrentUser(data.user )
     })
+    AdviceModel.getDailyAdvice().then(json => {
+      if (json) {
+        setAdvice(json)
+        console.log(json)
+      } else {
+        console.log("advice was not fetched");
+      }
+  })
   }
 
   /*TODO: For every 5 posts, fetch Advice Slip API */
@@ -64,6 +91,16 @@ function Home (props) {
   }) */
 
   let postsList = posts.map((post, index) => {
+    if (advice.slip && post.id % 2 == 0) {
+    return <>
+     <Card className="newsPostCard" centered>
+     <Card.Content>
+     <Card.Header> {advice.slip.advice}</Card.Header>
+     </Card.Content>
+   </Card>
+    {/* <UserPost {...post} key={ post.id } /> */}
+    </>
+    }  
     return  <UserPost {...post} key={ post.id } />
   })
 
@@ -73,6 +110,13 @@ function Home (props) {
     <div className="homepage">
       <LeftSideBar user={user} />
       <RightSideBar user={user} />
+
+    
+      
+
+
+
+
 
       { posts ? postsList : HomePostLoader }
 
@@ -85,3 +129,6 @@ function Home (props) {
  
 
 export default Home;
+
+
+/* { posts.length % 1 === 0 ? <> { posts ? postsList : HomePostLoader } </> : HomePostLoader } */

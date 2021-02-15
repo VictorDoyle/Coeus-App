@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import 'semantic-ui-css/semantic.min.css'
 import LandingPage from './pages/LandingPage'
 import routes from './config/routes'

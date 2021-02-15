@@ -12,6 +12,9 @@ process.env
 # production
 /build
 
+# secret 
+env.js
+
 # misc
 .DS_Store
 .env.local

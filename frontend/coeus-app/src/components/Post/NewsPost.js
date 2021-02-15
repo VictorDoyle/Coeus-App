@@ -47,41 +47,7 @@ function NewsPost() {
 
   return (
 <>  
-{/* FIXME: Delay render to show map of news */}
-{/* { news ? news.results.map((article) => {
-   return  <> 
-   <Card className="newsPostCard" centered>
-     <Card.Content>
-     <Card.Header> {article.source}</Card.Header>
-     </Card.Content>
 
-     <Card.Content>
-       <Card.Header> {article.title}</Card.Header>
-       <Card.Meta>
-         
-         <span className='date'> {article.published_date}</span>
-       </Card.Meta>
-       <Card.Description>
-        {article.abstract}
-       </Card.Description>
-     </Card.Content>
-     <Card.Content extra>
-       <a href="{article.url">
-         <Icon name='newspaper' />
-         Read Full Article
-
-         
-       </a>
-     </Card.Content>
-   </Card>
-   
-   
-   
-   
-    </> })
-
-: <Loader> Hello </Loader> }  */}
- 
 
 
   
@@ -126,7 +92,7 @@ function NewsPost() {
    
    
    
-    </> }) : <h1> HI </h1> } 
+    </> }) : <h1 className="errorNewsPost"> There seems to be an error! <br/> We'll be right with you </h1> } 
   
     </>
   )

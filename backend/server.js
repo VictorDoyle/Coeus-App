@@ -8,6 +8,7 @@ import postRoutes from "./controllers/posts.js"
 import userRoutes from "./controllers/users.js"
 import commentRoutes from './controllers/comments.js'
 import likeRoutes from './controllers/likes.js'
+import newsRoutes from './controllers/news.js'
 import { register, login, logout } from "./controllers/auth.js"
 import authRequired from './middleware/authRequired.js'
 
@@ -32,7 +33,9 @@ app.use('/api/v1/likes', authRequired, likeRoutes);
 app.use('/api/v1/register', register);
 app.use('/api/v1/login', login);
 app.use('/api/v1/logout', logout);
-
+/* External Modules (api fetches) */
+/* app.use('/api/v1/news', newsRoutes)
+ */
 
 
 app.get("/", function (request, response) {

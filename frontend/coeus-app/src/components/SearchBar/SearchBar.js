@@ -12,9 +12,6 @@ const initialState = {
 
   const source = _.times(5, () => ({
     /* username: props.users.username() */
-    /* description: faker.company.catchPhrase(),
-    image: faker.internet.avatar(),
-    price: faker.finance.amount(0, 100, 2, '$'), */
   }))
 
 function searchReducer(state, action) {
