@@ -3,6 +3,7 @@ import express from "express";
 import prisma from "@prisma/client";
 import cors from "cors";
 /* Internal Modules/Middleware */
+import path from "path";
 /* ROUTES */
 import postRoutes from "./controllers/posts.js"
 import userRoutes from "./controllers/users.js"
@@ -11,6 +12,12 @@ import likeRoutes from './controllers/likes.js'
 import newsRoutes from './controllers/news.js'
 import { register, login, logout } from "./controllers/auth.js"
 import authRequired from './middleware/authRequired.js'
+/* for heroku deployment */
+import dotenv from "dotenv"
+
+dotenv.config(); 
+
+
 
 /* Instanced Modules */
 const app = express();
@@ -21,6 +28,21 @@ const db = new prisma.PrismaClient({
   });
 /* Config */
 const PORT = process.env.PORT || 4000;
+
+/* Heroku deployment */
+const __dirname = path.resolve();
+
+if (process.env.NODE_ENV === "production") {
+    //www.freecodecamp.org/news/deploy-a-react-node-app-to/
+    https: app.use(express.static(path.join(__dirname, "/frontend/build")));
+    app.get("*", (req, res) => {
+      res.sendFile(path.join(__dirname, "/frontend", "build", "index.html"));
+    });
+  } else {
+    app.get("/", (req, res) => {
+      res.send("api is running");
+    });
+  }
 
 /* Middleware */
 app.use(express.json());
