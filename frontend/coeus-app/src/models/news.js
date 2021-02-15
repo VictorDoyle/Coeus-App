@@ -1,6 +1,6 @@
-import NewsApiKey from '../testing/env.js'
+/* import NewsApiKey from '../testing/env.js'
 
-
+ */
 
 class NewsModel {
 
