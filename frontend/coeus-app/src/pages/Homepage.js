@@ -91,19 +91,19 @@ function Home (props) {
   }) */
 
   let postsList = posts.map((post, index) => {
-    if (advice.slip && post.id % 2 == 0) {
+    /* if (advice.slip && post.id % 2 == 0) {
     return <>
      <Card className="newsPostCard" centered>
      <Card.Content>
      <Card.Header> {advice.slip.advice}</Card.Header>
      </Card.Content>
    </Card>
-    {/* <UserPost {...post} key={ post.id } /> */}
+    <UserPost {...post} key={ post.id } />
     </>
     }  else if (post.id % 2 !== 0) {
       return  <UserPost {...post} key={ post.id } />
-    }
-    /* return  <UserPost {...post} key={ post.id } /> */
+    } */
+    return  <UserPost {...post} key={ post.id } />
   })
 
   
