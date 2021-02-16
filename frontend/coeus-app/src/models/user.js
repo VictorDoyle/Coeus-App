@@ -1,10 +1,11 @@
-const url = `http://localhost:4000/api/v1`
-const userBaseUrl = `http://localhost:4000/api/v1/users`
+/* const url = `http://localhost:4000/api/v1`
+const userBaseUrl = `http://localhost:4000/api/v1/users` */
+const API = process.env.NODE_ENV === 'production' ? 'https://the-coeus-app.herokuapp.com/api/v1/users' : 'http://localhost:4000/api/v1/users';
 
 class UserModel {
   // access all users
   static all = () => {
-    return fetch(`${url}/users`, {
+    return fetch(`${API}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.uid}`
@@ -14,7 +15,7 @@ class UserModel {
 
   // accessed current user via Id+login
   static show = (id) => {
-    return fetch(`${userBaseUrl}/verify`, {
+    return fetch(`${API}/verify`, {
         method: "GET",
         headers: {
           authorization: `Bearer ${localStorage.uid}`
@@ -26,7 +27,7 @@ class UserModel {
 
   // show specific user
   static showUser = (id) => {
-    return fetch(`${userBaseUrl}/${id}`, {
+    return fetch(`${API}/${id}`, {
         method: "GET",
         headers: {
           authorization: `Bearer ${localStorage.uid}`
@@ -37,7 +38,7 @@ class UserModel {
 
   // create a user
   static create = (data) => {
-    return fetch(`${url}/users`, {
+    return fetch(`${API}`, {
       // options
       method: "POST",
       headers: {
@@ -50,7 +51,7 @@ class UserModel {
   // update-Edit user
 
 static update = (data) => {
-  return fetch(`${url}/users/edit`, {
+  return fetch(`${API}/edit`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -64,7 +65,7 @@ static update = (data) => {
   // delete route for user
   static delete = (id) => {
     console.log("showme user id", id)
-    return fetch(`${userBaseUrl}/delete/${id}`, {
+    return fetch(`${API}/delete/${id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.uid}`

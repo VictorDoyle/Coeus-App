@@ -1,11 +1,12 @@
-const url = `http://localhost:4000/api/v1`
-const userBaseUrl = `http://localhost:4000/api/v1/users`
+/* const url = `http://localhost:4000/api/v1`
+const userBaseUrl = `http://localhost:4000/api/v1/users` */
+const API = process.env.NODE_ENV === 'production' ? 'https://the-coeus-app.herokuapp.com/api/v1' : 'http://localhost:4000/api/v1';
 
 
 class AuthModel {
     static register = (data) => {
       console.log(data)
-        return fetch(`${url}/register`, {
+        return fetch(`${API}/register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -18,7 +19,7 @@ class AuthModel {
     
 
     static login = (data) => {
-        return fetch(`${url}/login`, {
+        return fetch(`${API}/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -28,7 +29,7 @@ class AuthModel {
       };
 
     static verify = () => {
-        return fetch(`${userBaseUrl}/verify`, {
+        return fetch(`${API}/users/verify`, {
           method: "GET",
           // add header authorization with token
           headers: {
