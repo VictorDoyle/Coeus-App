@@ -46,7 +46,7 @@ if (process.env.NODE_ENV === "production") {
 
 /* Middleware */
 app.use(express.json());
-app.use(cors("https://the-coeus-app.herokuapp.com/"))
+app.use(cors())
 /* API Routes  */
 app.use('/api/v1/posts', authRequired, postRoutes);
 app.use('/api/v1/users', authRequired, userRoutes);
