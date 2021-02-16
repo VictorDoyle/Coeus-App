@@ -11,7 +11,7 @@ const authRequired = (req, res, next) => {
 
 
     const token = bearerHeader.split(" ")[1];
-    jwt.verify(token, process.env.jwtsecret , function (err, payload) {
+    jwt.verify(token, process.env.jwtsecret, function (err, payload) {
       console.log(payload)
       if (err) res.sendStatus(500);
       
