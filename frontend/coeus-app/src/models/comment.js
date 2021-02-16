@@ -1,10 +1,11 @@
-const url = `http://localhost:4000/api/v1/comments`
+/* const url = `http://localhost:4000/api/v1/comments` */
+const API = process.env.NODE_ENV === 'production' ? 'https://the-coeus-app.herokuapp.com/api/v1/comments' : 'http://localhost:4000/api/v1/comments';
 
-class LikeModel {
+class CommentModel {
 
  // all comments
   static all = () => {
-    return fetch(`${url}`, {
+    return fetch(`${API}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.uid}`
@@ -14,7 +15,7 @@ class LikeModel {
 
   // access create comment route 
   static create = (data) => {
-    return fetch(`${url}`, {
+    return fetch(`${API}`, {
       // options
       method: "POST",
       headers: {
@@ -27,8 +28,8 @@ class LikeModel {
 
   // accessed delete route of comment
   static delete = (id) => {
-    return fetch(`${url}/${id}`).then(res => res.json())
+    return fetch(`${API}/${id}`).then(res => res.json())
   }
 }
 
-export default LikeModel
+export default CommentModel

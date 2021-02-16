@@ -1,10 +1,11 @@
-const url = `http://localhost:4000/api/v1/likes`
+/* const url = `http://localhost:4000/api/v1/likes` */
+const API = process.env.NODE_ENV === 'production' ? 'https://the-coeus-app.herokuapp.com/api/v1/likes' : 'http://localhost:4000/api/v1/likes';
 
 class LikeModel {
 
  // all likes
   static all = () => {
-    return fetch(`${url}`, {
+    return fetch(`${API}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.uid}`
@@ -14,7 +15,7 @@ class LikeModel {
 
   // access create like route 
   static create = (data) => {
-    return fetch(`${url}`, {
+    return fetch(`${API}`, {
       // options
       method: "POST",
       headers: {
@@ -29,7 +30,7 @@ class LikeModel {
   /* FIXME: improper use of delete - need to pass in an ID but no Id on URL to query from since inside of post comp */
   static delete = (id) => {
     console.log("from model like", id)
-    return fetch(`${url}/${id}`, {
+    return fetch(`${API}/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

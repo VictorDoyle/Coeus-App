@@ -100,8 +100,10 @@ function Home (props) {
    </Card>
     {/* <UserPost {...post} key={ post.id } /> */}
     </>
-    }  
-    return  <UserPost {...post} key={ post.id } />
+    }  else if (post.id % 2 !== 0) {
+      return  <UserPost {...post} key={ post.id } />
+    }
+    /* return  <UserPost {...post} key={ post.id } /> */
   })
 
   
