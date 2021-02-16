@@ -1,3 +1,7 @@
+import dotenv from "dotenv"
+
+dotenv.config(); 
+
 const newsAPI = process.env.NewsApiKey
 
 class NewsModel {
