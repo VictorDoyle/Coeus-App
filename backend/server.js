@@ -29,6 +29,21 @@ const db = new prisma.PrismaClient({
 /* Config */
 const PORT = process.env.PORT || 4000;
 
+/* Middleware */
+app.use(express.json());
+app.use(cors())
+/* API Routes  */
+app.use('/api/v1/posts', authRequired, postRoutes);
+app.use('/api/v1/users', authRequired, userRoutes);
+app.use('/api/v1/comments', authRequired, commentRoutes);
+app.use('/api/v1/likes', authRequired, likeRoutes);
+app.use('/api/v1/register', register);
+app.use('/api/v1/login', login);
+app.use('/api/v1/logout', logout);
+/* External Modules (api fetches) */
+/* app.use('/api/v1/news', newsRoutes)
+ */
+
 /* Heroku deployment */
 const __dirname = path.resolve();
 
@@ -44,20 +59,7 @@ if (process.env.NODE_ENV === "production") {
     });
   }
 
-/* Middleware */
-app.use(express.json());
-app.use(cors())
-/* API Routes  */
-app.use('/api/v1/posts', authRequired, postRoutes);
-app.use('/api/v1/users', authRequired, userRoutes);
-app.use('/api/v1/comments', authRequired, commentRoutes);
-app.use('/api/v1/likes', authRequired, likeRoutes);
-app.use('/api/v1/register', register);
-app.use('/api/v1/login', login);
-app.use('/api/v1/logout', logout);
-/* External Modules (api fetches) */
-/* app.use('/api/v1/news', newsRoutes)
- */
+
 
 
 app.get("/", function (request, response) {
