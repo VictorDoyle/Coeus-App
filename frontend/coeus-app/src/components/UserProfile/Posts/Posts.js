@@ -7,8 +7,6 @@ import PostModal from '../Posts/PostModal'
 
 
 function ProfilePosts (props) {
-
-  console.log(props, "this")
   
   return(
   

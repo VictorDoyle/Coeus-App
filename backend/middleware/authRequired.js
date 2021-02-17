@@ -12,7 +12,7 @@ const authRequired = (req, res, next) => {
 
     const token = bearerHeader.split(" ")[1];
     jwt.verify(token, process.env.jwtsecret, function (err, payload) {
-      console.log(payload)
+      console.log("this is jwt payload", payload)
       if (err) res.sendStatus(500);
       
       req.currentUser = payload.id;
