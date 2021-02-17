@@ -8,9 +8,9 @@ import RightSideBar from '../components/RightSideBar/RightSideBar';
 const News = () => {
   return (
     <div className="homepage">
-      <NewsPostContainer />
       <LeftSideBar />
       <RightSideBar />
+      <NewsPostContainer />
     </div>
   );
 }
