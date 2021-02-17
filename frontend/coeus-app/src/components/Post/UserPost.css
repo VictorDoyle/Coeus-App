@@ -9,7 +9,9 @@
 .newsPostCard {
     position: relative;
     top: 60px;
-    z-index: 30;
+    margin-bottom: 20px !important;
+    z-index: 1;
+    width: 580px  !important;
 }
 
 .postTitleLink {
