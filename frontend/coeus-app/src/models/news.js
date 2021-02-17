@@ -1,8 +1,8 @@
-import dotenv from "dotenv"
+/* import dotenv from "dotenv"
 
 dotenv.config(); 
-
-const newsAPI = process.env.NewsApiKey
+ */
+const newsAPI = process.env.REACT_APP_NewsApiKey
 
 class NewsModel {
 
