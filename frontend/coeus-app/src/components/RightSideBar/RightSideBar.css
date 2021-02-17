@@ -1,6 +1,6 @@
 
 .rightSideBar {
-    position: absolute;
+    position: sticky;
     float: right;
     top: 132px;
     right: 15px;

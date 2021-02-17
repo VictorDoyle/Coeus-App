@@ -1,8 +1,9 @@
 .leftSideBar {
-    position: absolute;
+    position: sticky;
     float: left;
     top: 132px;
     left: 15px;
+    z-index: 30;
 }
 
 .ui.vertical.icon.menu {

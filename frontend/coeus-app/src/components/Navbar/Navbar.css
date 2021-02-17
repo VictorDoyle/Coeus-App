@@ -1,5 +1,6 @@
 .NavBar {
-    position:relative;
+    position:sticky;
+    top: 0px;
     z-index: 20;
     width: 100%;
 }
