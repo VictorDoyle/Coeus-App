@@ -6,6 +6,14 @@ class AdviceModel {
             method: "GET"
             }).then(res => res.json())
         }
+
+    static getDailyQuote = () => {
+        return fetch(`https://api.quotable.io/random`, {
+            method: "GET"
+        }).then(res => res.json())
+    }
+
+    
     }
     
     export default AdviceModel

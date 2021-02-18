@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Card } from 'semantic-ui-react'
+import { Card, Icon } from 'semantic-ui-react'
 /* Components */
 import LeftSideBar from '../components/LeftSidebar/LeftSideBar';
 import Navbar from '../components/Navbar/Navbar'
@@ -11,7 +11,7 @@ import UserPost from '../components/Post/UserPost';
 import PostModel from '../models/post'
 import UserModel from '../models/user';
 import AdviceModel from '../models/advice';
-import PostModal from '../components/UserProfile/Posts/PostModal'
+import NewsModel from '../models/news';
 /* User info */
 import { useRecoilState } from "recoil";
 import { userState } from "../recoil/atoms"
@@ -31,8 +31,12 @@ function Home (props) {
   const [user, setCurrentUser] = useState([])
   const [users, setUsers] = useState([])
   const [posts, setPosts] = useState([])
-  const [likes, setLike] = useState([]);
+  const [likes, setLike] = useState([])
   const [ advice, setAdvice ] = useState([])
+  /* multiple quotes */
+  const [ quotes, setQuotes ] = useState([])
+  /* unique quote */
+  const [ quote, setQuote ] = useState([])
 
 
   /* fetch advice for homepage posts */
@@ -74,37 +78,84 @@ function Home (props) {
         console.log("advice was not fetched");
       }
   })
+    AdviceModel.getDailyQuote().then(json => {
+      if (json) {
+        setQuote(json)
+        console.log("dailyquotes json", json)
+      } else {
+        console.log("daily quotes were not fetched");
+      }
+  })
+
   }
+  
 
-  /*TODO: For every 5 posts, fetch Advice Slip API */
-  // Get request = https://api.adviceslip.com/advice
-  /* callback/ string To define your own callback function name and return the JSON in a function wrapper (as JSONP), add the parameter callback with your desired name as the value. */
-  // render advice slips in simple container boxes or UserPosts
+  /* SECTION: Quote Cards version 1 */
 
-  //TODO: For every 10 posts, fetch https://uselessfacts.jsph.pl/random.json
-  // render same as fetchAdviceSlip
-
-
-
- /*  let postsList = posts.map((post, index) => {
-    return <Link to={`/profile/${ post.authorId }`}><UserPost {...post} key={ post.id } /></Link>
+  /* let quotesList = quotes.map((quote, index) => {
+    return <> <Card className="newsPostCard" centered>
+    <Card.Content>
+    <Card.Header> Here's A Daily Quote For Your Thoughts </Card.Header>
+    <Card.Description>
+       {quote.content.rendered}
+      </Card.Description>
+    </Card.Content>
+    <Card.Content extra>
+        <Icon name='hand point right' />
+        Quote by: {quote.title.rendered}  
+    </Card.Content>
+  </Card> </>
   }) */
 
+/* SECTION: Quotes Cards  version 2*/
+  /* let quotesList = quotes.map((quote, index) => {
+    return <> <Card className="newsPostCard" centered>
+    <Card.Content>
+    <Card.Header> Here's A Daily Quote For Your Thoughts </Card.Header>
+    <Card.Description>
+       {quote.content.rendered}
+      </Card.Description>
+    </Card.Content>
+    <Card.Content extra>
+        <Icon name='hand point right' />
+        Quote by: {quote.title.rendered}  
+    </Card.Content>
+  </Card> </>
+  }) */
+
+  /* SECTION: Advice cards */
+
   let postsList = posts.map((post, index) => {
-    /* if (advice.slip && post.id % 2 == 0) {
+    if (advice.slip && post.id % 2 == 0) {
     return <>
-     <Card className="newsPostCard" centered>
+   {/*   <Card className="newsPostCard" centered>
      <Card.Content>
-     <Card.Header> {advice.slip.advice}</Card.Header>
+     <Card.Header> Here's A Daily Advice Slip For You</Card.Header>
+     <Card.Description>
+        {advice.slip.advice}
+       </Card.Description>
      </Card.Content>
-   </Card>
+     <Card.Content extra>
+       <a href="#">
+         <Icon name='newspaper' />
+         Read Full Article
+       </a>
+     </Card.Content>
+   </Card> */}
     <UserPost {...post} key={ post.id } />
     </>
     }  else if (post.id % 2 !== 0) {
       return  <UserPost {...post} key={ post.id } />
-    } */
-    return  <UserPost {...post} key={ post.id } />
+    }
+    
+    return <>
+    
+     <UserPost {...post} key={ post.id } /> 
+    
+    </>
   })
+
+  
 
   
   return (
@@ -113,14 +164,27 @@ function Home (props) {
       <LeftSideBar user={user} />
       <RightSideBar user={user} />
 
-    
-      
-
-
-
-
 
       { posts ? postsList : HomePostLoader }
+      {/* { quotes ? quotesList :  HomePostLoader} */}
+
+      {/* generate new per 5 posts */}
+      <Card className="newsPostCard" centered>
+    <Card.Content>
+    <Card.Header> Here's A Daily Quote For Your Thoughts </Card.Header>
+    <Card.Description>
+      "{quote.content}"
+      </Card.Description>
+    </Card.Content>
+    <Card.Content extra>
+        <Icon name='hand point right' />
+        By: {quote.author}
+        
+    </Card.Content>
+  </Card>
+      {/* end of daily quote content */}
+
+
 
     </div>
 </>

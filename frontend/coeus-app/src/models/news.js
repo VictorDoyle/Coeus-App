@@ -1,8 +1,7 @@
-/* import dotenv from "dotenv"
-
-dotenv.config(); 
- */
+/* NY TIMES API */
 const newsAPI = process.env.REACT_APP_NewsApiKey
+/* WEB SCRAPER API NEWS */
+const allNewsApi = process.env.REACT_APP_AllNewsApi
 
 class NewsModel {
 

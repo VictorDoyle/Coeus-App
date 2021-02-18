@@ -10,7 +10,7 @@ function NewsPost() {
 
 
 /* fetch most viewed articles for the last seven days from NY TIMES */
-  const fetchWeeklyNews = (event) => {
+  /* const fetchWeeklyNews = (event) => {
     event.preventDefault();
     NewsModel.getWeeklyNews().then(json => {
         if (json) {
@@ -21,6 +21,18 @@ function NewsPost() {
         }
     })
     
+  } */
+
+  const fetchLatestNews = (event) => {
+    event.preventDefault();
+    NewsModel.getLatestNews().then(json => {
+      if (json) {
+        setNews(json)
+        console.log(json)
+      } else {
+        console.log("the latest news was not fetched")
+      }
+    })
   }
 
 /* FIXME: Use this for fetching top 20 posts */
@@ -57,7 +69,7 @@ function NewsPost() {
       </Card.Content>
 
       
-          <Button onClick={fetchWeeklyNews}></Button>
+          <Button onClick={fetchLatestNews}></Button>
        
     </Card>
 
